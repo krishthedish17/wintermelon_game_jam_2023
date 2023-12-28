@@ -326,7 +326,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_suxxd"]
-size = Vector2(29, 49)
+size = Vector2(19.5, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkwv4"]
 size = Vector2(124, 101)
@@ -337,15 +337,15 @@ size = Vector2(124, 101)
 script = ExtResource("1_qc8ra")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" groups=["player"]]
-position = Vector2(258, 606)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_3e3h8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(258, 602)
+position = Vector2(11, 1)
 sprite_frames = SubResource("SpriteFrames_kqlxo")
 animation = &"parry"
 autoplay = "Idle"
-frame_progress = 0.0732176
+frame_progress = 0.47782
 
 [node name="knife" type="Node2D" parent="CharacterBody2D"]
 
@@ -354,12 +354,14 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D/knife" groups=["knife"]]
+position = Vector2(-263, -604)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/knife/Area2D"]
-position = Vector2(296, 600)
+position = Vector2(300.75, 600)
 shape = SubResource("RectangleShape2D_suxxd")
 
 [node name="parry hitbox" type="Area2D" parent="CharacterBody2D" groups=["parry"]]
+position = Vector2(-250, -602)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/parry hitbox"]
 position = Vector2(253, 600)

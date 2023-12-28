@@ -80,3 +80,4 @@ theme = ExtResource("4_hgdcj")
 text = "Cunning Cabbage"
 
 [connection signal="pressed" from="Node/Button" to="Node" method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Node/Button2" to="Node" method="_on_fire_pressed"]

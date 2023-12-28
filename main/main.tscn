@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i8sr6qp5njbc"]
+[gd_scene load_steps=16 format=3 uid="uid://i8sr6qp5njbc"]
 
 [ext_resource type="Script" path="res://main/menubg.gd" id="1_c0ted"]
 [ext_resource type="Texture2D" uid="uid://bhpkgepsa0v5c" path="res://parallax_field.png" id="1_nbdtj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://k4rrls0tnho0" path="res://GUI.png" id="4_g1dru"]
 [ext_resource type="Script" path="res://main/buttons.gd" id="4_mumir"]
 [ext_resource type="Texture2D" uid="uid://dt1rs03who2p6" path="res://melon boy sprites.png" id="6_7tvkc"]
+[ext_resource type="AudioStream" uid="uid://ceoayx0vr2ce5" path="res://music/menu music.mp3" id="8_hu7df"]
 
 [sub_resource type="Theme" id="Theme_fk2mt"]
 default_font = ExtResource("3_8hcac")
@@ -183,5 +184,9 @@ position = Vector2(94, 118)
 texture = ExtResource("6_7tvkc")
 region_enabled = true
 region_rect = Rect2(14, 14, 47, 42)
+
+[node name="menu music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_hu7df")
+autoplay = true
 
 [connection signal="pressed" from="buttons/Button" to="buttons" method="_on_start_pressed"]

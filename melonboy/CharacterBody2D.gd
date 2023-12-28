@@ -16,6 +16,7 @@ var is_attacking: bool = false
 var can_attack: bool = true
 var parrying: bool = false
 var can_parry: bool = true
+var player_pos: Vector2 = Vector2.ZERO
 
 @onready var player_sprite = $AnimatedSprite2D
 @onready var knife_cooldown = $"knife/knife cooldown"
@@ -65,6 +66,9 @@ func _physics_process(delta):
 # --------- BUILT-IN FUNCTIONS ---------- #
 
 func _process(_delta):
+	player_pos = $".".position
+	GameManager.player_pos = player_pos
+	print(GameManager.player_pos)
 	# Calling functions
 	player_animations()
 	flip_player()

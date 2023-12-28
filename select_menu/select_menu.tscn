@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://bganeyp2865t6"]
+
+[ext_resource type="Texture2D" uid="uid://bhpkgepsa0v5c" path="res://parallax_field.png" id="1_geb8w"]
+[ext_resource type="Texture2D" uid="uid://ddpxelvutum0p" path="res://Training Dummy Sprite Sheet.png" id="2_ggw7b"]
+[ext_resource type="Script" path="res://select_menu.gd" id="3_umrbf"]
+[ext_resource type="Theme" uid="uid://cwpttvgwu6d7k" path="res://defaultbutton/defaultbutton.tres" id="4_hgdcj"]
+
+[node name="select_menu" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2884, 324)
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("1_geb8w")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(190, 266)
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("2_ggw7b")
+region_enabled = true
+region_rect = Rect2(3, 5, 26, 23)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(889, 255)
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("2_ggw7b")
+region_enabled = true
+region_rect = Rect2(3, 5, 26, 23)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(902, 520)
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("2_ggw7b")
+region_enabled = true
+region_rect = Rect2(3, 5, 26, 23)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(188, 520)
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("2_ggw7b")
+region_enabled = true
+region_rect = Rect2(3, 5, 26, 23)
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("3_umrbf")
+
+[node name="Button" type="Button" parent="Node"]
+offset_left = 22.0
+offset_top = 329.0
+offset_right = 340.0
+offset_bottom = 360.0
+theme = ExtResource("4_hgdcj")
+text = "Practice room"
+
+[node name="Button2" type="Button" parent="Node"]
+offset_left = 745.0
+offset_top = 323.0
+offset_right = 1063.0
+offset_bottom = 354.0
+theme = ExtResource("4_hgdcj")
+text = "Smoking hot pepper"
+
+[node name="Button3" type="Button" parent="Node"]
+offset_left = 33.0
+offset_top = 579.0
+offset_right = 351.0
+offset_bottom = 610.0
+theme = ExtResource("4_hgdcj")
+text = "Betraying Blueberry"
+
+[node name="Button4" type="Button" parent="Node"]
+offset_left = 745.0
+offset_top = 577.0
+offset_right = 1063.0
+offset_bottom = 608.0
+theme = ExtResource("4_hgdcj")
+text = "Cunning Cabbage"
+
+[connection signal="pressed" from="Node/Button" to="Node" method="_on_tutorial_pressed"]

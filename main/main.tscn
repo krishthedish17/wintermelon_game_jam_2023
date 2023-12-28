@@ -1,0 +1,187 @@
+[gd_scene load_steps=15 format=3 uid="uid://i8sr6qp5njbc"]
+
+[ext_resource type="Script" path="res://main/menubg.gd" id="1_c0ted"]
+[ext_resource type="Texture2D" uid="uid://bhpkgepsa0v5c" path="res://parallax_field.png" id="1_nbdtj"]
+[ext_resource type="FontFile" uid="uid://h3wwxtbritps" path="res://04b_30/04B_30__.TTF" id="3_8hcac"]
+[ext_resource type="Theme" uid="uid://cwpttvgwu6d7k" path="res://defaultbutton/defaultbutton.tres" id="4_fip1k"]
+[ext_resource type="Texture2D" uid="uid://k4rrls0tnho0" path="res://GUI.png" id="4_g1dru"]
+[ext_resource type="Script" path="res://main/buttons.gd" id="4_mumir"]
+[ext_resource type="Texture2D" uid="uid://dt1rs03who2p6" path="res://melon boy sprites.png" id="6_7tvkc"]
+
+[sub_resource type="Theme" id="Theme_fk2mt"]
+default_font = ExtResource("3_8hcac")
+default_font_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kemcq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl55o"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nfsl"]
+texture = ExtResource("4_g1dru")
+region_rect = Rect2(113, 81, 30, 14)
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w23og"]
+texture = ExtResource("4_g1dru")
+region_rect = Rect2(113, 81, 30, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tshf6"]
+texture = ExtResource("4_g1dru")
+region_rect = Rect2(113, 98, 30, 13)
+modulate_color = Color(1, 1, 1, 0.607843)
+
+[sub_resource type="Theme" id="Theme_v1ns1"]
+default_font = ExtResource("3_8hcac")
+default_font_size = 13
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 2
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("3_8hcac")
+Button/styles/disabled = SubResource("StyleBoxFlat_kemcq")
+Button/styles/focus = SubResource("StyleBoxFlat_fl55o")
+Button/styles/hover = SubResource("StyleBoxTexture_3nfsl")
+Button/styles/normal = SubResource("StyleBoxTexture_w23og")
+Button/styles/pressed = SubResource("StyleBoxTexture_tshf6")
+
+[node name="main" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_c0ted")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1050, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(575, 319)
+scale = Vector2(3.60625, 3.58889)
+texture = ExtResource("1_nbdtj")
+region_enabled = true
+region_rect = Rect2(0.700001, -0.0999985, 319, 180.4)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1150, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(576.775, 323)
+scale = Vector2(3.62003, 3.606)
+texture = ExtResource("1_nbdtj")
+region_enabled = true
+region_rect = Rect2(321.5, 0.899979, 317.9, 180.4)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1150, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(575, 338.131)
+scale = Vector2(3.62893, 3.49574)
+texture = ExtResource("1_nbdtj")
+region_enabled = true
+region_rect = Rect2(642.017, 1.18979, 318.323, 179.204)
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1150, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(576, 320.821)
+scale = Vector2(3.65079, 3.55031)
+texture = ExtResource("1_nbdtj")
+region_enabled = true
+region_rect = Rect2(960.34, -1.16818, 315.965, 186.278)
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1140, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(576, 334.828)
+scale = Vector2(3.70418, 3.51571)
+texture = ExtResource("1_nbdtj")
+region_enabled = true
+region_rect = Rect2(1285.74, 0, 311.249, 181.583)
+
+[node name="text" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="text"]
+offset_left = 44.0
+offset_top = 133.0
+offset_right = 1066.0
+offset_bottom = 237.0
+theme = SubResource("Theme_fk2mt")
+text = "CHARM CLASH"
+
+[node name="buttons" type="Node" parent="."]
+script = ExtResource("4_mumir")
+
+[node name="Button" type="Button" parent="buttons"]
+offset_left = 439.0
+offset_top = 279.0
+offset_right = 676.0
+offset_bottom = 399.0
+theme = SubResource("Theme_v1ns1")
+text = "Play"
+
+[node name="Button2" type="Button" parent="buttons"]
+offset_left = 122.0
+offset_top = 499.0
+offset_right = 259.0
+offset_bottom = 574.0
+theme = ExtResource("4_fip1k")
+text = "Save"
+
+[node name="Button3" type="Button" parent="buttons"]
+offset_left = 894.0
+offset_top = 511.0
+offset_right = 1031.0
+offset_bottom = 586.0
+theme = ExtResource("4_fip1k")
+text = "Load"
+
+[node name="melonboy" type="Sprite2D" parent="."]
+position = Vector2(94, 118)
+texture = ExtResource("6_7tvkc")
+region_enabled = true
+region_rect = Rect2(14, 14, 47, 42)
+
+[connection signal="pressed" from="buttons/Button" to="buttons" method="_on_start_pressed"]

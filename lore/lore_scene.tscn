@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciyixr6eussw4"]
+
+[ext_resource type="FontFile" uid="uid://h3wwxtbritps" path="res://04b_30/04B_30__.TTF" id="2_3l62u"]
+[ext_resource type="Script" path="res://lore/lorescroll.gd" id="2_bk6v8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tnaaa"]
+line_spacing = 100.0
+font = ExtResource("2_3l62u")
+font_size = 25
+
+[node name="lore scene" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_bk6v8")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 20000)
+
+[node name="Node2D" type="Node2D" parent="ParallaxBackground/ParallaxLayer"]
+z_index = 2
+
+[node name="Label" type="Label" parent="ParallaxBackground/ParallaxLayer/Node2D"]
+offset_left = 5.0
+offset_top = 549.0
+offset_right = 1174.0
+offset_bottom = 1944.0
+text = "On one fateful morning, melon boy came home from a day 
+of work at his restaurant and found his house destroyed. 
+He found out that the veggies, who ran the opposing 
+restaurant destroyed his house. His sous chef, the 
+blueberry, had given them the location of his house and 
+had joined the veggies. Enraged, he took his trusty knife 
+and deflection charm and went to avenge his house. 
+
+He, in fact, would not let this slide."
+label_settings = SubResource("LabelSettings_tnaaa")
+metadata/_edit_use_anchors_ = true

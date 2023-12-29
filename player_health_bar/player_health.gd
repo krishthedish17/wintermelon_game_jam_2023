@@ -34,7 +34,7 @@ func _process(delta):
 		await get_tree().create_timer(1).timeout
 		wait = false
 
-	if GameManager.health == 3:
+	if GameManager.health >= 3:
 		full.visible = true
 	elif GameManager.health == 2:
 		two.visible = true

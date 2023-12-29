@@ -17,11 +17,14 @@ var can_attack: bool = true
 var parrying: bool = false
 var can_parry: bool = true
 var player_pos: Vector2 = Vector2.ZERO
+var invuln = false
 
 @onready var player_sprite = $AnimatedSprite2D
 @onready var knife_cooldown = $"knife/knife cooldown"
 @onready var knife_hitbox = $knife/Area2D/CollisionShape2D
 @onready var parry_hitbox = $"parry hitbox/CollisionShape2D"
+@onready var animation_player = $AnimationPlayer
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -147,7 +150,14 @@ func parry():
 		can_parry = true
 		
 func health_loss():
-	GameManager.health -= 1
+	if invuln == false:
+		GameManager.health -= 1
+		invuln = true
+		animation_player.play("invuln")
+		await get_tree().create_timer(2).timeout
+		invuln = false
+	if invuln == true:
+		pass
 
 func death():
 	if GameManager.health <= 0:
@@ -155,4 +165,5 @@ func death():
 			GameManager.load_tutorial()
 			GameManager.health = 3
 		else:
-			pass
+			queue_free()
+			

@@ -21,7 +21,10 @@ var is_fiend: = false
 var is_smoke: = false
 var fire_health = 100
 var fire_hit: = false
-
+var beat_fire: = false
+var berry_shot: = false
+var is_berry_shot: = false
+var berry_hit: = false
 func load_lore_scene() -> void:
 	get_tree().change_scene_to_packed(lore_scene)
 	await get_tree().create_timer(30).timeout

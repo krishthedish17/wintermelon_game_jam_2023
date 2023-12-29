@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite = $CharacterBody2D/AnimatedSprite2D
 @onready var animation_player = $"../AnimationPlayer"
 @onready var texture_rect = $TextureRect
 @onready var hit_player = $"hit player"
@@ -13,7 +13,7 @@ var charge_laser = false
 var smoke = false
 var fiend = false
 var can_attack = true
-var pepper_shot = true
+var berry_shot = true
 var hit = false
 var invuln = false
 var started_laser = false
@@ -27,7 +27,7 @@ func _ready():
 	GameManager.is_tutorial = false
 	GameManager.health = 3
 	dead = false
-	texture_rect.visible = false
+	#texture_rect.visible = false
 	sprite.play("dead")
 	await get_tree().create_timer(2).timeout
 	started_fight = true
@@ -48,7 +48,7 @@ func _process(delta):
 func attack():
 	if can_attack == true:
 		var current_attack = boss_attack.randi_range(1, 5)
-		if GameManager.is_pepper_shot:
+		if GameManager.is_berry_shot:
 			current_attack = boss_attack.randi_range(2, 4)
 		if GameManager.is_beam:
 			while current_attack == 2:
@@ -61,11 +61,12 @@ func attack():
 				current_attack = boss_attack.randi_range(1, 5)
 		can_attack = false
 		print("attack picked")
-		if (current_attack == 1 || current_attack == 5) && (GameManager.is_pepper_shot == false):
-			pepper_shot = true
+		if (current_attack == 1 || current_attack == 5) && (GameManager.is_berry_shot == false):
+			berry_shot = true
 			await get_tree().create_timer(1.7).timeout
-			GameManager.pepper_shot = true
+			GameManager.berry_shot = true
 			await get_tree().create_timer(2.4).timeout
+		"
 		if current_attack == 2 && GameManager.is_beam == false:
 			charge_laser = true
 			
@@ -80,6 +81,7 @@ func attack():
 			smoke = true
 			await get_tree().create_timer(0.5).timeout
 			GameManager.pepper_smoke = true
+		"
 		current_attack = 0
 		await get_tree().create_timer(1.5).timeout
 		can_attack = true
@@ -98,13 +100,13 @@ func taking_damage():
 		print("playing anim")	
 		hit_player.play("hit")
 		losing_health = true
-		GameManager.pepper_shot = true
+		GameManager.berry_shot = true
 		await get_tree().create_timer(0.8).timeout
 		invuln = false
 		hit = false
 		GameManager.fire_hit = false
 		GameManager.parry_hit = false
-	elif charge_laser == false && fiend == false && hit == false && smoke == false && pepper_shot == false && dead == false:
+	elif charge_laser == false && fiend == false && hit == false && smoke == false && berry_shot == false && dead == false:
 		sprite.play("Idle")
 	if charge_laser == true && dead == false:
 		sprite.play("fire")
@@ -118,10 +120,10 @@ func taking_damage():
 		sprite.play("smoke")
 		await get_tree().create_timer(1).timeout
 		smoke = false
-	if pepper_shot == true && dead == false:
+	if berry_shot == true && dead == false:
 		sprite.play("pepper shot")
 		await get_tree().create_timer(2.4).timeout
-		pepper_shot = false
+		berry_shot = false
 
 func health_loss():
 	if losing_health == true:

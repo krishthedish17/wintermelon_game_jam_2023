@@ -4,6 +4,7 @@ extends Node2D
 @onready var animation_player = $"../AnimationPlayer"
 @onready var texture_rect = $TextureRect
 @onready var hit_player = $"hit player"
+@onready var fire_attack = $"AnimatedSprite2D/fire attack"
 
 
 var health = 100
@@ -28,7 +29,7 @@ func _ready():
 	GameManager.health = 3
 	dead = false
 	texture_rect.visible = false
-	sprite.play("dead")
+	sprite.play("intro")
 	await get_tree().create_timer(2).timeout
 	started_fight = true
 	
@@ -68,7 +69,6 @@ func attack():
 			await get_tree().create_timer(2.4).timeout
 		if current_attack == 2 && GameManager.is_beam == false:
 			charge_laser = true
-			
 			await get_tree().create_timer(1.2).timeout
 			GameManager.pepper_laser = true
 			await get_tree().create_timer(3).timeout
@@ -108,7 +108,8 @@ func taking_damage():
 		sprite.play("Idle")
 	if charge_laser == true && dead == false:
 		sprite.play("fire")
-		await get_tree().create_timer(4.2).timeout
+		fire_attack.play("fire attack")
+		await get_tree().create_timer(5).timeout
 		charge_laser = false
 	if fiend == true && dead == false:
 		sprite.play("pan flip")

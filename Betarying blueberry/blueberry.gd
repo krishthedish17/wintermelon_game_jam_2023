@@ -4,12 +4,13 @@ extends Node2D
 @onready var animation_player = $"../AnimationPlayer"
 @onready var texture_rect = $TextureRect
 @onready var hit_player = $"hit player"
-
+@onready var collision_shape_2d = $CharacterBody2D/CollisionShape2D
+@onready var area_2d = $CharacterBody2D/Area2D
 
 var health = 100
 var boss_attack = RandomNumberGenerator.new()
 var current_attack = 0
-var charge_laser = false
+var ball_charge = false
 var smoke = false
 var fiend = false
 var can_attack = true
@@ -20,7 +21,9 @@ var started_laser = false
 var losing_health = false
 var dead = false
 var started_fight = false
-
+var original_pos = position.x
+var forward = false
+var is_ball = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = 100
@@ -29,7 +32,7 @@ func _ready():
 	dead = false
 	#texture_rect.visible = false
 	sprite.play("dead")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2.1).timeout
 	started_fight = true
 	
 
@@ -44,16 +47,20 @@ func _process(delta):
 	GameManager.fire_health = health
 	if GameManager.health == 0:
 		started_fight = false
+	if is_ball:
+		collision_shape_2d.disabled = true
+	else:
+		collision_shape_2d.disabled = false
 
 func attack():
 	if can_attack == true:
 		var current_attack = boss_attack.randi_range(1, 5)
 		if GameManager.is_berry_shot:
 			current_attack = boss_attack.randi_range(2, 4)
-		if GameManager.is_beam:
+		if is_ball:
 			while current_attack == 2:
 				current_attack = boss_attack.randi_range(1, 5)
-		if GameManager.is_fiend:
+		if GameManager.wave_shot:
 			while current_attack == 3:
 				current_attack = boss_attack.randi_range(1, 5)
 		if GameManager.is_smoke:
@@ -66,14 +73,16 @@ func attack():
 			await get_tree().create_timer(1.7).timeout
 			GameManager.berry_shot = true
 			await get_tree().create_timer(2.4).timeout
-		"
-		if current_attack == 2 && GameManager.is_beam == false:
-			charge_laser = true
-			
+		if current_attack == 2 && is_ball == false:
+			ball_charge = true
+			is_ball = true
 			await get_tree().create_timer(1.2).timeout
-			GameManager.pepper_laser = true
-			await get_tree().create_timer(3).timeout
-		if current_attack == 3 && GameManager.is_fiend == false:
+			forward = true
+			ball()
+			await get_tree().create_timer(11).timeout
+			is_ball = false
+		"
+		if current_attack == 3 && GameManager.wave_shot == false:
 			fiend = true
 			await get_tree().create_timer(0.3).timeout
 			GameManager.pepper_fiend = true
@@ -106,12 +115,12 @@ func taking_damage():
 		hit = false
 		GameManager.fire_hit = false
 		GameManager.parry_hit = false
-	elif charge_laser == false && fiend == false && hit == false && smoke == false && berry_shot == false && dead == false:
+	elif ball_charge == false && fiend == false && hit == false && smoke == false && berry_shot == false && dead == false:
 		sprite.play("Idle")
-	if charge_laser == true && dead == false:
+	if ball_charge == true && dead == false:
 		sprite.play("fire")
 		await get_tree().create_timer(4.2).timeout
-		charge_laser = false
+		ball_charge = false
 	if fiend == true && dead == false:
 		sprite.play("pan flip")
 		await get_tree().create_timer(0.6).timeout
@@ -143,3 +152,24 @@ func death():
 		await get_tree().create_timer(5).timeout
 		GameManager.load_select_screen()
 		queue_free()
+
+func ball():
+	while position.x > -600 && forward == true:
+		position.x -= 20
+		await get_tree().create_timer(0.1).timeout
+	forward = false
+	if forward == false && is_ball:
+		while position.x < original_pos:
+			position.x += 20
+			await get_tree().create_timer(0.1).timeout
+	
+	
+
+
+
+
+func _on_area_2d_body_entered(body):
+	if is_ball:
+		if body.is_in_group("player"):
+			print("bro got shot rip")
+			body.health_loss()

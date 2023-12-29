@@ -25,6 +25,7 @@ var beat_fire: = false
 var berry_shot: = false
 var is_berry_shot: = false
 var berry_hit: = false
+var wave_shot: = false
 func load_lore_scene() -> void:
 	get_tree().change_scene_to_packed(lore_scene)
 	await get_tree().create_timer(30).timeout

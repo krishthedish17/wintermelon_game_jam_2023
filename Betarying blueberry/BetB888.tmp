@@ -102,7 +102,7 @@ sources/0 = SubResource("TileSetAtlasSource_lgywq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nxj8q"]
 texture = ExtResource("5_a4t7c")
-texture_region_size = Vector2i(1, 1)
+texture_region_size = Vector2i(15, 16)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -340,7 +340,6 @@ position = Vector2(864.5, 301.25)
 shape = SubResource("RectangleShape2D_nybt7")
 
 [node name="blueberry shot" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(868, 305)
 script = ExtResource("9_fn2ek")
 bullet_fall = -30
@@ -361,7 +360,6 @@ shape = SubResource("RectangleShape2D_e6r8x")
 sprite_frames = SubResource("SpriteFrames_m7eyy")
 
 [node name="blueberry shot2" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(868, 305)
 script = ExtResource("9_fn2ek")
 bullet_fall = 0
@@ -382,7 +380,6 @@ shape = SubResource("RectangleShape2D_e6r8x")
 sprite_frames = SubResource("SpriteFrames_m7eyy")
 
 [node name="blueberry shot3" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(868, 305)
 script = ExtResource("9_fn2ek")
 bullet_fall = -45
@@ -403,7 +400,6 @@ shape = SubResource("RectangleShape2D_e6r8x")
 sprite_frames = SubResource("SpriteFrames_m7eyy")
 
 [node name="blueberry shot4" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(868, 305)
 script = ExtResource("9_fn2ek")
 bullet_fall = -200
@@ -424,7 +420,6 @@ shape = SubResource("RectangleShape2D_e6r8x")
 sprite_frames = SubResource("SpriteFrames_m7eyy")
 
 [node name="blueberry shot5" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(868, 305)
 script = ExtResource("9_fn2ek")
 payback = true
@@ -446,7 +441,6 @@ shape = SubResource("RectangleShape2D_e6r8x")
 sprite_frames = SubResource("SpriteFrames_m7eyy")
 
 [node name="blueberry shot6" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(868, 305)
 script = ExtResource("9_fn2ek")
 payback = true
@@ -468,7 +462,6 @@ shape = SubResource("RectangleShape2D_e6r8x")
 sprite_frames = SubResource("SpriteFrames_m7eyy")
 
 [node name="blueberry shot7" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(868, 305)
 script = ExtResource("9_fn2ek")
 payback = true
@@ -490,7 +483,6 @@ shape = SubResource("RectangleShape2D_e6r8x")
 sprite_frames = SubResource("SpriteFrames_m7eyy")
 
 [node name="blueberry shot8" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(868, 305)
 script = ExtResource("9_fn2ek")
 payback = true

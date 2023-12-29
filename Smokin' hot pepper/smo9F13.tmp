@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://7pf46cjjeod1"]
+[gd_scene load_steps=125 format=3 uid="uid://7pf46cjjeod1"]
 
 [ext_resource type="Texture2D" uid="uid://b7xlnd3dc1jao" path="res://volcano bg.png" id="1_i6a04"]
 [ext_resource type="PackedScene" uid="uid://qms3ajccrajl" path="res://player_health_bar/player_health.tscn" id="2_613tp"]
@@ -17,10 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bmp2ckom0arle" path="res://Fire boss sprites/Pepper Boss/Pepper Smoke animation-Sheet.png" id="10_liquh"]
 [ext_resource type="Script" path="res://Smokin' hot pepper/smoke.gd" id="10_qqqe8"]
 [ext_resource type="Texture2D" uid="uid://bycyefv7b1nh7" path="res://Fire boss sprites/Pepper Boss/smoke.png" id="15_0c3uj"]
-[ext_resource type="Script" path="res://Smokin' hot pepper/loss screen.gd" id="18_2aphn"]
 [ext_resource type="FontFile" uid="uid://h3wwxtbritps" path="res://04b_30/04B_30__.TTF" id="19_0rwub"]
 [ext_resource type="Texture2D" uid="uid://dcf8jq3urxprd" path="res://outer.png" id="19_k1t1v"]
-[ext_resource type="Script" path="res://Smokin' hot pepper/try again.gd" id="19_k04i4"]
 [ext_resource type="Texture2D" uid="uid://l2j65aot584l" path="res://progress.png" id="20_ib3ww"]
 [ext_resource type="Script" path="res://Smokin' hot pepper/fire_health_bar.gd" id="21_vhhdc"]
 
@@ -124,70 +122,6 @@ region = Rect2(1024, 0, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xsyw"]
 atlas = ExtResource("6_y20xp")
 region = Rect2(1280, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fp0cg"]
-atlas = ExtResource("10_d6f4e")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w268i"]
-atlas = ExtResource("8_qtdof")
-region = Rect2(0, 0, 384, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_takrp"]
-atlas = ExtResource("10_d6f4e")
-region = Rect2(256, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgtlk"]
-atlas = ExtResource("8_qtdof")
-region = Rect2(0, 0, 384, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_76b3p"]
-atlas = ExtResource("10_d6f4e")
-region = Rect2(512, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7ptf"]
-atlas = ExtResource("8_qtdof")
-region = Rect2(0, 0, 384, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lmfq7"]
-atlas = ExtResource("10_d6f4e")
-region = Rect2(768, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqk0v"]
-atlas = ExtResource("8_qtdof")
-region = Rect2(0, 36, 384, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i6fq1"]
-atlas = ExtResource("10_d6f4e")
-region = Rect2(1024, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sdat4"]
-atlas = ExtResource("8_qtdof")
-region = Rect2(0, 42, 384, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqghi"]
-atlas = ExtResource("10_d6f4e")
-region = Rect2(1280, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ysdlq"]
-atlas = ExtResource("8_qtdof")
-region = Rect2(0, 48, 384, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wtjiw"]
-atlas = ExtResource("10_d6f4e")
-region = Rect2(1536, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2paxo"]
-atlas = ExtResource("8_qtdof")
-region = Rect2(0, 54, 384, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xao2k"]
-atlas = ExtResource("10_d6f4e")
-region = Rect2(1792, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5lr82"]
-atlas = ExtResource("8_qtdof")
-region = Rect2(0, 72, 384, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h1qij"]
 atlas = ExtResource("8_qtdof")
@@ -478,59 +412,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fp0cg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w268i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_takrp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgtlk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_76b3p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x7ptf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lmfq7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqk0v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i6fq1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sdat4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dqghi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ysdlq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wtjiw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2paxo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xao2k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5lr82")
-}],
-"loop": true,
-"name": &"dead",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_h1qij")
 }, {
 "duration": 1.0,
@@ -798,10 +679,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5t635"]
 size = Vector2(68, 53)
 
-[sub_resource type="LabelSettings" id="LabelSettings_hg8u7"]
-font = ExtResource("19_0rwub")
-font_color = Color(1, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_oits0"]
 font = ExtResource("19_0rwub")
 font_size = 30
@@ -900,7 +777,6 @@ shape = SubResource("RectangleShape2D_4dfa3")
 script = ExtResource("4_hcujb")
 
 [node name="pepper shot" type="CharacterBody2D" parent="chef_spicy"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(1017, 302)
 script = ExtResource("9_uuslx")
 speed = 300.0
@@ -923,7 +799,6 @@ scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_54xcs")
 
 [node name="pepper shot2" type="CharacterBody2D" parent="chef_spicy"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(1017, 302)
 script = ExtResource("9_uuslx")
 speed = 300.0
@@ -947,7 +822,6 @@ scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_54xcs")
 
 [node name="pepper shot3" type="CharacterBody2D" parent="chef_spicy"]
-modulate = Color(0, 1, 0, 1)
 position = Vector2(1017, 302)
 script = ExtResource("9_uuslx")
 speed = 300.0
@@ -970,136 +844,13 @@ position = Vector2(5, 8)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_54xcs")
 
-[node name="pepper shot4" type="CharacterBody2D" parent="chef_spicy"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(1017, 302)
-script = ExtResource("9_uuslx")
-speed = 300.0
-bullet_fall = -200
-rotation_val = -45
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot4"]
-position = Vector2(2, 3)
-shape = SubResource("RectangleShape2D_jagdt")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="chef_spicy/pepper shot4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot4/Area2D"]
-position = Vector2(5, 3)
-shape = SubResource("RectangleShape2D_q64xs")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chef_spicy/pepper shot4"]
-position = Vector2(5, 8)
-scale = Vector2(0.15, 0.15)
-sprite_frames = SubResource("SpriteFrames_54xcs")
-
-[node name="pepper shot5" type="CharacterBody2D" parent="chef_spicy"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(1017, 302)
-script = ExtResource("9_uuslx")
-speed = 300.0
-payback = true
-rotation_val = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot5"]
-position = Vector2(2, 3)
-shape = SubResource("RectangleShape2D_jagdt")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="chef_spicy/pepper shot5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot5/Area2D"]
-position = Vector2(5, 3)
-shape = SubResource("RectangleShape2D_q64xs")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chef_spicy/pepper shot5"]
-position = Vector2(5, 8)
-scale = Vector2(0.15, 0.15)
-sprite_frames = SubResource("SpriteFrames_54xcs")
-
-[node name="pepper shot6" type="CharacterBody2D" parent="chef_spicy"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(1017, 302)
-script = ExtResource("9_uuslx")
-speed = 300.0
-payback = true
-bullet_fall = -30
-rotation_val = 270
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot6"]
-position = Vector2(2, 3)
-shape = SubResource("RectangleShape2D_jagdt")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="chef_spicy/pepper shot6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot6/Area2D"]
-position = Vector2(5, 3)
-shape = SubResource("RectangleShape2D_q64xs")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chef_spicy/pepper shot6"]
-position = Vector2(5, 8)
-scale = Vector2(0.15, 0.15)
-sprite_frames = SubResource("SpriteFrames_54xcs")
-
-[node name="pepper shot7" type="CharacterBody2D" parent="chef_spicy"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(1017, 302)
-script = ExtResource("9_uuslx")
-speed = 300.0
-payback = true
-bullet_fall = -45
-rotation_val = 345
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot7"]
-position = Vector2(2, 3)
-shape = SubResource("RectangleShape2D_jagdt")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="chef_spicy/pepper shot7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot7/Area2D"]
-position = Vector2(5, 3)
-shape = SubResource("RectangleShape2D_q64xs")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chef_spicy/pepper shot7"]
-position = Vector2(5, 8)
-scale = Vector2(0.15, 0.15)
-sprite_frames = SubResource("SpriteFrames_54xcs")
-
-[node name="pepper shot8" type="CharacterBody2D" parent="chef_spicy"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(1017, 302)
-script = ExtResource("9_uuslx")
-speed = 300.0
-payback = true
-bullet_fall = -200
-rotation_val = -45
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot8"]
-position = Vector2(2, 3)
-shape = SubResource("RectangleShape2D_jagdt")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="chef_spicy/pepper shot8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/pepper shot8/Area2D"]
-position = Vector2(5, 3)
-shape = SubResource("RectangleShape2D_q64xs")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chef_spicy/pepper shot8"]
-position = Vector2(5, 8)
-scale = Vector2(0.15, 0.15)
-sprite_frames = SubResource("SpriteFrames_54xcs")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chef_spicy"]
 position = Vector2(902, 260)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qpu65")
-animation = &"dead"
+animation = &"pepper shot"
 autoplay = "Idle"
-frame_progress = 0.759137
+frame_progress = 0.777117
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="chef_spicy"]
 
@@ -1223,50 +974,6 @@ frame_progress = 0.792155
 position = Vector2(1, -16.5)
 shape = SubResource("RectangleShape2D_5t635")
 
-[node name="loss screen" type="TextureRect" parent="chef_spicy"]
-offset_left = 204.0
-offset_top = 26.0
-offset_right = 673.0
-offset_bottom = 495.0
-scale = Vector2(1.4, 1)
-texture = ExtResource("19_k1t1v")
-expand_mode = 4
-script = ExtResource("18_2aphn")
-
-[node name="Sprite2D4" type="Sprite2D" parent="chef_spicy/loss screen"]
-position = Vector2(224.286, 192)
-scale = Vector2(0.6, 0.75)
-texture = ExtResource("6_y20xp")
-region_enabled = true
-region_rect = Rect2(1358, 21, 121, 210)
-
-[node name="Label" type="Label" parent="chef_spicy/loss screen"]
-layout_mode = 0
-offset_left = 77.8572
-offset_top = 315.0
-offset_right = 395.857
-offset_bottom = 367.0
-text = "Can't stand the heat,
-GET OUT OF THE KITCHEN"
-label_settings = SubResource("LabelSettings_hg8u7")
-
-[node name="try again" type="Button" parent="chef_spicy/loss screen"]
-layout_mode = 0
-offset_left = 132.143
-offset_top = 374.0
-offset_right = 325.143
-offset_bottom = 405.0
-text = "Try again?"
-script = ExtResource("19_k04i4")
-
-[node name="return to menu" type="Button" parent="chef_spicy/loss screen/try again"]
-layout_mode = 0
-offset_left = -0.714294
-offset_top = 42.0
-offset_right = 192.286
-offset_bottom = 73.0
-text = "Return to select screen?"
-
 [node name="player_health" parent="." instance=ExtResource("2_613tp")]
 position = Vector2(-46, 23)
 scale = Vector2(1.4, 1.4)
@@ -1286,7 +993,6 @@ offset_left = 302.0
 offset_top = 90.0
 offset_right = 771.0
 offset_bottom = 141.0
-step = 0.01
 value = 100.0
 texture_under = ExtResource("19_k1t1v")
 texture_progress = ExtResource("20_ib3ww")
@@ -1306,21 +1012,9 @@ autoplay = "default"
 [connection signal="body_entered" from="chef_spicy/pepper shot2/Area2D" to="chef_spicy/pepper shot2" method="_on_bullet_connected"]
 [connection signal="area_entered" from="chef_spicy/pepper shot3/Area2D" to="chef_spicy/pepper shot3" method="_on_parried"]
 [connection signal="body_entered" from="chef_spicy/pepper shot3/Area2D" to="chef_spicy/pepper shot3" method="_on_bullet_connected"]
-[connection signal="area_entered" from="chef_spicy/pepper shot4/Area2D" to="chef_spicy/pepper shot4" method="_on_parried"]
-[connection signal="body_entered" from="chef_spicy/pepper shot4/Area2D" to="chef_spicy/pepper shot4" method="_on_bullet_connected"]
-[connection signal="area_entered" from="chef_spicy/pepper shot5/Area2D" to="chef_spicy/pepper shot5" method="_on_parried"]
-[connection signal="body_entered" from="chef_spicy/pepper shot5/Area2D" to="chef_spicy/pepper shot5" method="_on_bullet_connected"]
-[connection signal="area_entered" from="chef_spicy/pepper shot6/Area2D" to="chef_spicy/pepper shot6" method="_on_parried"]
-[connection signal="body_entered" from="chef_spicy/pepper shot6/Area2D" to="chef_spicy/pepper shot6" method="_on_bullet_connected"]
-[connection signal="area_entered" from="chef_spicy/pepper shot7/Area2D" to="chef_spicy/pepper shot7" method="_on_parried"]
-[connection signal="body_entered" from="chef_spicy/pepper shot7/Area2D" to="chef_spicy/pepper shot7" method="_on_bullet_connected"]
-[connection signal="area_entered" from="chef_spicy/pepper shot8/Area2D" to="chef_spicy/pepper shot8" method="_on_parried"]
-[connection signal="body_entered" from="chef_spicy/pepper shot8/Area2D" to="chef_spicy/pepper shot8" method="_on_bullet_connected"]
 [connection signal="area_entered" from="chef_spicy/CharacterBody2D/Area2D" to="chef_spicy" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="chef_spicy/Area2D" to="chef_spicy/laser" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="chef_spicy/spicy fiends/spicy fiends/Area2D" to="chef_spicy/spicy fiends/spicy fiends" method="_on_bullet_connected"]
 [connection signal="body_entered" from="chef_spicy/spicy fiends/spicy fiends2/Area2D" to="chef_spicy/spicy fiends/spicy fiends2" method="_on_bullet_connected"]
 [connection signal="body_entered" from="chef_spicy/spicy fiends/spicy fiends3/Area2D" to="chef_spicy/spicy fiends/spicy fiends3" method="_on_bullet_connected"]
 [connection signal="body_entered" from="chef_spicy/smoke/Area2D" to="chef_spicy/smoke" method="_on_bullet_connected"]
-[connection signal="pressed" from="chef_spicy/loss screen/try again" to="chef_spicy/loss screen/try again" method="_on_pressed"]
-[connection signal="pressed" from="chef_spicy/loss screen/try again/return to menu" to="chef_spicy/loss screen/try again" method="_on_return_to_menu_pressed"]

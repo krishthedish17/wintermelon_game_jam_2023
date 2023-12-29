@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://qms3ajccrajl"]
+[gd_scene load_steps=6 format=3 uid="uid://qms3ajccrajl"]
 
 [ext_resource type="Script" path="res://player_health_bar/player_health.gd" id="1_metpo"]
 [ext_resource type="Texture2D" uid="uid://cdlson1xoemkc" path="res://Health UI.png" id="1_wl6bx"]
+[ext_resource type="Theme" uid="uid://blj2607ksxqkj" path="res://boss_health/boss_health.tres" id="3_0cq1e"]
+[ext_resource type="Texture2D" uid="uid://k4rrls0tnho0" path="res://GUI.png" id="4_kovkp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbmgc"]
+texture = ExtResource("4_kovkp")
+region_rect = Rect2(145, 65, 46, 14)
+modulate_color = Color(0, 0.956863, 0, 1)
 
 [node name="player_health" type="Node2D"]
 script = ExtResource("1_metpo")
@@ -21,3 +28,18 @@ position = Vector2(55, 41)
 texture = ExtResource("1_wl6bx")
 region_enabled = true
 region_rect = Rect2(5, 6, 23, 20)
+
+[node name="parry_bar" type="Node2D" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="parry_bar"]
+offset_left = 41.0
+offset_top = 61.0
+offset_right = 45.0
+offset_bottom = 88.0
+scale = Vector2(25.1868, 0.802334)
+theme = ExtResource("3_0cq1e")
+theme_override_styles/fill = SubResource("StyleBoxTexture_wbmgc")
+max_value = 15.0
+page = 1.0
+value = 14.0
+show_percentage = false

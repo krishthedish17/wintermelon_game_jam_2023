@@ -143,17 +143,16 @@ func parry():
 		await get_tree().create_timer(1.7).timeout
 		parrying = false
 		$"parry hitbox/CollisionShape2D".disabled = true
-		await get_tree().create_timer(15).timeout
+		await get_tree().create_timer(14).timeout
 		can_parry = true
 		
 func health_loss():
 	GameManager.health -= 1
 
 func death():
-	if GameManager.health == 0:
+	if GameManager.health <= 0:
 		if GameManager.is_tutorial:
 			GameManager.load_tutorial()
 			GameManager.health = 3
 		else:
-			GameManager.load_select_screen()
-			GameManager.health = 3
+			pass

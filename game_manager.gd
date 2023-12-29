@@ -11,7 +11,16 @@ var is_tutorial = true
 var pepper_laser = false
 var pepper_fiend = false
 var pepper_shot = false
-var player_pos: Vector2 = Vector2.ZERO 
+var pepper_smoke = false
+var player_pos: Vector2 = Vector2.ZERO
+var parry_hit: = false
+var can_parry: = true
+var is_pepper_shot: = false
+var is_beam: = false
+var is_fiend: = false
+var is_smoke: = false
+var fire_health = 100
+var fire_hit: = false
 
 func load_lore_scene() -> void:
 	get_tree().change_scene_to_packed(lore_scene)
@@ -38,3 +47,4 @@ func load_pepper_level() -> void:
 	is_tutorial = false
 	get_tree().change_scene_to_packed(pepper_level)
 	
+

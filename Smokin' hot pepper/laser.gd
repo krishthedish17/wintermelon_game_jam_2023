@@ -20,10 +20,12 @@ func _ready():
 func _process(delta):
 	if GameManager.pepper_laser == true:
 		self.visible = true
+		GameManager.is_beam = true
 		hitbox.disabled = false
 		await get_tree().create_timer(3).timeout
 		self.visible = false
 		hitbox.disabled = true
+		GameManager.is_beam = false
 		GameManager.pepper_laser = false
 	
 

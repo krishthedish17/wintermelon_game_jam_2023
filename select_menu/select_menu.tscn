@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bganeyp2865t6"]
+[gd_scene load_steps=6 format=3 uid="uid://bganeyp2865t6"]
 
 [ext_resource type="Texture2D" uid="uid://bhpkgepsa0v5c" path="res://parallax_field.png" id="1_geb8w"]
 [ext_resource type="Texture2D" uid="uid://ddpxelvutum0p" path="res://Training Dummy Sprite Sheet.png" id="2_ggw7b"]
+[ext_resource type="Texture2D" uid="uid://dv1dqnypuie7k" path="res://Fire boss sprites/Pepper Boss/Idle.png" id="3_gy2bh"]
 [ext_resource type="Script" path="res://select_menu.gd" id="3_umrbf"]
 [ext_resource type="Theme" uid="uid://cwpttvgwu6d7k" path="res://defaultbutton/defaultbutton.tres" id="4_hgdcj"]
 
@@ -22,23 +23,14 @@ region_rect = Rect2(3, 5, 26, 23)
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(889, 255)
-scale = Vector2(3.606, 3.606)
-texture = ExtResource("2_ggw7b")
+position = Vector2(889, 211)
+texture = ExtResource("3_gy2bh")
 region_enabled = true
-region_rect = Rect2(3, 5, 26, 23)
-
-[node name="Sprite2D5" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(902, 520)
-scale = Vector2(3.606, 3.606)
-texture = ExtResource("2_ggw7b")
-region_enabled = true
-region_rect = Rect2(3, 5, 26, 23)
+region_rect = Rect2(329, 20, 126, 210)
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(188, 520)
+position = Vector2(901, 479)
 scale = Vector2(3.606, 3.606)
 texture = ExtResource("2_ggw7b")
 region_enabled = true
@@ -64,20 +56,12 @@ theme = ExtResource("4_hgdcj")
 text = "Smoking hot pepper"
 
 [node name="Button3" type="Button" parent="Node"]
-offset_left = 33.0
-offset_top = 579.0
-offset_right = 351.0
-offset_bottom = 610.0
+offset_left = 736.0
+offset_top = 573.0
+offset_right = 1054.0
+offset_bottom = 604.0
 theme = ExtResource("4_hgdcj")
 text = "Betraying Blueberry"
-
-[node name="Button4" type="Button" parent="Node"]
-offset_left = 745.0
-offset_top = 577.0
-offset_right = 1063.0
-offset_bottom = 608.0
-theme = ExtResource("4_hgdcj")
-text = "Cunning Cabbage"
 
 [connection signal="pressed" from="Node/Button" to="Node" method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Node/Button2" to="Node" method="_on_fire_pressed"]

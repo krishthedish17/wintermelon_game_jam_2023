@@ -163,7 +163,7 @@ position = Vector2(987, 593)
 shape = SubResource("RectangleShape2D_eyl8d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D3/bullet"]
-modulate = Color(1, 0, 1, 1)
+modulate = Color(0, 1, 0, 1)
 position = Vector2(987, 591)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_4ejph")

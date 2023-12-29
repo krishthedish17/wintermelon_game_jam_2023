@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=3 uid="uid://7pf46cjjeod1"]
+[gd_scene load_steps=153 format=3 uid="uid://7pf46cjjeod1"]
 
 [ext_resource type="Texture2D" uid="uid://b7xlnd3dc1jao" path="res://volcano bg.png" id="1_i6a04"]
 [ext_resource type="PackedScene" uid="uid://qms3ajccrajl" path="res://player_health_bar/player_health.tscn" id="2_613tp"]
@@ -771,43 +771,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_r8u5f"]
-resource_name = "fire attack"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(958, 265), Vector2(898, 262), Vector2(702, 192), Vector2(787, 202), Vector2(757, 202), Vector2(878, 201), Vector2(906, 185), Vector2(826, 188), Vector2(674, 191), Vector2(826, 188), Vector2(674, 191), Vector2(826, 188), Vector2(674, 191), Vector2(826, 188), Vector2(674, 191), Vector2(826, 188), Vector2(674, 191), Vector2(826, 188), Vector2(674, 191), Vector2(826, 188), Vector2(674, 191), Vector2(826, 188), Vector2(674, 191), Vector2(906, 185), Vector2(878, 201), Vector2(958, 265)]
-}
-
-[sub_resource type="Animation" id="Animation_priob"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(958, 265)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwgwr"]
-_data = {
-"RESET": SubResource("Animation_priob"),
-"fire attack": SubResource("Animation_r8u5f")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nl20y"]
 size = Vector2(230, 365.5)
 
@@ -1270,11 +1233,6 @@ animation = &"intro"
 autoplay = "Idle"
 frame = 8
 frame_progress = 0.26952
-
-[node name="fire attack" type="AnimationPlayer" parent="chef_spicy/AnimatedSprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_bwgwr")
-}
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="chef_spicy"]
 

@@ -4,7 +4,6 @@ extends Node2D
 @onready var animation_player = $"../AnimationPlayer"
 @onready var texture_rect = $TextureRect
 @onready var hit_player = $"hit player"
-@onready var fire_attack = $"AnimatedSprite2D/fire attack"
 
 
 var health = 100
@@ -108,7 +107,6 @@ func taking_damage():
 		sprite.play("Idle")
 	if charge_laser == true && dead == false:
 		sprite.play("fire")
-		fire_attack.play("fire attack")
 		await get_tree().create_timer(5).timeout
 		charge_laser = false
 	if fiend == true && dead == false:

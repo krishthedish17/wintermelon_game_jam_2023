@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://k4rrls0tnho0" path="res://GUI.png" id="4_g1dru"]
 [ext_resource type="Script" path="res://main/buttons.gd" id="4_mumir"]
 [ext_resource type="Texture2D" uid="uid://dt1rs03who2p6" path="res://melon boy sprites.png" id="6_7tvkc"]
-[ext_resource type="AudioStream" uid="uid://ceoayx0vr2ce5" path="res://music/menu music.mp3" id="8_hu7df"]
+[ext_resource type="AudioStream" uid="uid://skwnuu78vsos" path="res://music/Menu.mp3" id="8_y6jkd"]
 
 [sub_resource type="Theme" id="Theme_fk2mt"]
 default_font = ExtResource("3_8hcac")
@@ -186,7 +186,9 @@ region_enabled = true
 region_rect = Rect2(14, 14, 47, 42)
 
 [node name="menu music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_hu7df")
+stream = ExtResource("8_y6jkd")
 autoplay = true
 
 [connection signal="pressed" from="buttons/Button" to="buttons" method="_on_start_pressed"]
+[connection signal="pressed" from="buttons/Button2" to="buttons" method="_on_savew"]
+[connection signal="pressed" from="buttons/Button3" to="buttons" method="_on_load"]

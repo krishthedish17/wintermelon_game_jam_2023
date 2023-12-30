@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://b8m1qig3x013l"]
+
+[ext_resource type="Texture2D" uid="uid://duukashokw0us" path="res://Betarying blueberry/blueberry/MINEEEEEEsSSSSS.png" id="1_syiqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2jy0"]
+atlas = ExtResource("1_syiqv")
+region = Rect2(0, 0, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2jy0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

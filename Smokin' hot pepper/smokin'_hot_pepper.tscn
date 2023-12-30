@@ -1,4 +1,4 @@
-[gd_scene load_steps=173 format=3 uid="uid://7pf46cjjeod1"]
+[gd_scene load_steps=178 format=3 uid="uid://7pf46cjjeod1"]
 
 [ext_resource type="Texture2D" uid="uid://b7xlnd3dc1jao" path="res://volcano bg.png" id="1_i6a04"]
 [ext_resource type="PackedScene" uid="uid://qms3ajccrajl" path="res://player_health_bar/player_health.tscn" id="2_613tp"]
@@ -25,6 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://l2j65aot584l" path="res://progress.png" id="20_ib3ww"]
 [ext_resource type="Texture2D" uid="uid://k4rrls0tnho0" path="res://GUI.png" id="21_al8y1"]
 [ext_resource type="Script" path="res://Smokin' hot pepper/fire_health_bar.gd" id="21_vhhdc"]
+[ext_resource type="AudioStream" uid="uid://dhj7abmrtg574" path="res://music/pepper.mp3" id="26_ckqwm"]
+[ext_resource type="AudioStream" uid="uid://uk4wlriwct51" path="res://music/death_ost.mp3" id="27_wa2c1"]
+[ext_resource type="AudioStream" uid="uid://bk57crff5o4xm" path="res://music/win_ost.mp3" id="28_b4wn5"]
+[ext_resource type="Script" path="res://Smokin' hot pepper/death music.gd" id="28_xi68g"]
+[ext_resource type="Script" path="res://Smokin' hot pepper/win music.gd" id="30_1uk3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7m4a"]
 size = Vector2(77, 514)
@@ -1424,7 +1429,7 @@ z_index = 2
 position = Vector2(958, 265)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qpu65")
-animation = &"dead"
+animation = &"fire"
 autoplay = "Idle"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="chef_spicy"]
@@ -1656,6 +1661,18 @@ autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_03rr8")
 }
+
+[node name="bg music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_ckqwm")
+autoplay = true
+
+[node name="death music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_wa2c1")
+script = ExtResource("28_xi68g")
+
+[node name="win music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_b4wn5")
+script = ExtResource("30_1uk3w")
 
 [connection signal="area_entered" from="chef_spicy/pepper shot/Area2D" to="chef_spicy/pepper shot" method="_on_parried"]
 [connection signal="body_entered" from="chef_spicy/pepper shot/Area2D" to="chef_spicy/pepper shot" method="_on_bullet_connected"]

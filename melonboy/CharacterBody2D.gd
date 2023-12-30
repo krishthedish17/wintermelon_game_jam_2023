@@ -46,7 +46,6 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("Jump"):
 			velocity.y = jump_velocity
 			jump_count += 1
-			print(jump_count)
 	
 			
 	#handles wall slide.
@@ -71,7 +70,6 @@ func _physics_process(delta):
 func _process(_delta):
 	player_pos = $".".position
 	GameManager.player_pos = player_pos
-	print(GameManager.player_pos)
 	# Calling functions
 	player_animations()
 	flip_player()
@@ -151,7 +149,7 @@ func parry():
 		can_parry = true
 		
 func health_loss():
-	if invuln == false:
+	if invuln == false && GameManager.dying_boss == false:
 		GameManager.health -= 1
 		invuln = true
 		animation_player.play("invuln")
@@ -171,6 +169,5 @@ func death():
 func hurricane():
 	while GameManager.is_hurricane:
 			position.x += 0.05
-			print("hurricaning")
 			await get_tree().create_timer(0.1).timeout
 	

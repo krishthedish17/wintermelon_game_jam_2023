@@ -4,6 +4,8 @@ extends Node2D
 @onready var animation_player = $"../AnimationPlayer"
 @onready var texture_rect = $TextureRect
 @onready var hit_player = $"hit player"
+@onready var bg_music = $"../bg music"
+
 
 
 var health = 100
@@ -23,7 +25,7 @@ var started_fight = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = 100
+	health = 1
 	GameManager.is_tutorial = false
 	GameManager.health = 3
 	dead = false
@@ -44,6 +46,10 @@ func _process(delta):
 	GameManager.fire_health = health
 	if GameManager.health == 0:
 		started_fight = false
+	if GameManager.health <= 0:
+		bg_music.playing = false
+	if GameManager.dying_boss == true:
+		bg_music.playing = false
 
 func attack():
 	if can_attack == true:
@@ -135,8 +141,10 @@ func death():
 		dead = true
 		sprite.play("dead")
 		texture_rect.visible = true
+		GameManager.dying_boss = true
 		GameManager.beat_fire = true
 		animation_player.play("win")
 		await get_tree().create_timer(4).timeout
+		GameManager.dying_boss = false
 		GameManager.load_select_screen()
 		queue_free()

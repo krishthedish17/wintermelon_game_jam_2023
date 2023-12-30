@@ -42,10 +42,6 @@ func _process(delta):
 		GameManager.mine = false
 		shooting = false
 		GameManager.is_mine = false
-		if layer == 1:
-			layer = 2
-		else:
-			layer = 1
 
 	shoot()
 

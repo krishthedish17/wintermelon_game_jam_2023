@@ -1,11 +1,14 @@
 extends Node
 
+var save_path = "user://variable.save"
+
 var main_scene: PackedScene = preload("res://main/main.tscn")
 var lore_scene: PackedScene = preload("res://lore/lore_scene.tscn")
 var tutorial: PackedScene = preload("res://levels/tutorial/tutorial.tscn")
 var select_menu: PackedScene = preload("res://select_menu/select_menu.tscn")
 var pepper_level: PackedScene = preload("res://Smokin' hot pepper/smokin'_hot_pepper.tscn")
 var berry_level: PackedScene = preload("res://Betarying blueberry/Betraying blueberry.tscn")
+var win: PackedScene = preload("res://win/win.tscn")
 var played_game = false
 var health = 3
 var is_tutorial = true
@@ -35,6 +38,7 @@ var mine: = false
 var berry_health: = 100
 var beat_water: = false
 var dying_boss: = false
+var won: = false
 func load_lore_scene() -> void:
 	get_tree().change_scene_to_packed(lore_scene)
 	await get_tree().create_timer(30).timeout
@@ -63,4 +67,9 @@ func load_pepper_level() -> void:
 func load_berry_level() -> void:
 	is_tutorial = false
 	get_tree().change_scene_to_packed(berry_level)
+
+func load_win_scene() -> void:
+	is_tutorial = false
+	get_tree().change_scene_to_packed(win)
+
 

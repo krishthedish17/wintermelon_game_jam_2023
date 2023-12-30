@@ -31,7 +31,6 @@ func _process(delta):
 		position.y -= bullet_fall * delta
 		bullet_sprite.rotation = rotation_val
 		bullet_area.rotation = rotation_val
-		print(position.x)
 		if distance > max_distance:
 			distance = position.x - original_pos
 		else:
@@ -49,7 +48,6 @@ func _process(delta):
 		parried = true
 		self.visible = true
 		position.x += 2 * speed * delta
-		print(position.x)
 		if position.x > original_pos:
 			position.x = original_pos
 			position.y = original_height
@@ -69,7 +67,6 @@ func _process(delta):
 		position.y -= bullet_fall * delta
 		bullet_sprite.rotation = rotation_val
 		bullet_area.rotation = rotation_val
-		print(position.x)
 		if distance > max_distance:
 			distance = position.x - original_pos
 		else:
@@ -95,7 +92,6 @@ func _process(delta):
 		parried = true
 		self.visible = true
 		position.x += 2 * speed * delta
-		print(position.x)
 		if position.x > original_pos:
 			position.x = original_pos
 			position.y = original_height

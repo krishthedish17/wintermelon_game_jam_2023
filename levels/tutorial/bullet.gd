@@ -50,7 +50,6 @@ func _process(delta):
 func _on_bullet_connected(body):
 	if body.is_in_group("player"):
 		print("bro got shot rip")
-		body.health_loss()
 		position.x = original_pos
 		self.visible = false
 		distance = 0

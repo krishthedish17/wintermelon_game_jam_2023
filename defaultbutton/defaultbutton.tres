@@ -15,30 +15,13 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl55o"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ir41"]
+texture = ExtResource("1_4vw6u")
+region_rect = Rect2(145, 65, 46, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nfsl"]
 texture = ExtResource("1_4vw6u")
-region_rect = Rect2(113, 81, 30, 14)
+region_rect = Rect2(145, 65, 46, 14)
 modulate_color = Color(1, 1, 1, 0.607843)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w23og"]
@@ -72,7 +55,7 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_nky0s")
 Button/styles/disabled = SubResource("StyleBoxFlat_kemcq")
-Button/styles/focus = SubResource("StyleBoxFlat_fl55o")
+Button/styles/focus = SubResource("StyleBoxTexture_4ir41")
 Button/styles/hover = SubResource("StyleBoxTexture_3nfsl")
 Button/styles/normal = SubResource("StyleBoxTexture_w23og")
 Button/styles/pressed = SubResource("StyleBoxTexture_tshf6")

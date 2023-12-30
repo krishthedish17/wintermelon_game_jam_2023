@@ -25,7 +25,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if shooting == true && layer == timing:
+	if shooting == true:
 		rise()
 		GameManager.mine = true
 		GameManager.is_mine = true

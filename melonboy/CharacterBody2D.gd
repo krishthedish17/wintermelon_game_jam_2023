@@ -8,6 +8,12 @@ var jump_count : int = 0
 
 @export_category("Toggle Functions") # Double jump feature is disable by default (Can be toggled from inspector)
 @export var double_jump : = false
+@onready var knife_swing = $"../knife swing"
+@onready var parry_sound = $"../parry sound"
+@onready var jump = $"../jump"
+@onready var hit = $"../hit"
+
+
 
 var is_grounded : bool = false
 var jump_velocity: float = -400
@@ -45,6 +51,7 @@ func _physics_process(delta):
 	if jump_count < max_jump_count:
 		if Input.is_action_just_pressed("Jump"):
 			velocity.y = jump_velocity
+			jump.play()
 			jump_count += 1
 	
 			
@@ -129,6 +136,7 @@ func flip_player():
 
 func attacking():
 	is_attacking = true
+	knife_swing.play()
 	knife_cooldown.start()
 
 
@@ -140,6 +148,7 @@ func _on_knife_cooldown_timeout():
 func parry():
 	if Input.is_action_just_pressed("parry") && can_parry == true:
 		parrying = true
+		parry_sound.play()
 		$"parry hitbox/CollisionShape2D".disabled = false
 		can_parry = false
 		await get_tree().create_timer(1.7).timeout
@@ -151,6 +160,7 @@ func parry():
 func health_loss():
 	if invuln == false && GameManager.dying_boss == false:
 		GameManager.health -= 1
+		hit.play()
 		invuln = true
 		animation_player.play("invuln")
 		await get_tree().create_timer(2).timeout

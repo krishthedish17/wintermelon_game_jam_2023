@@ -23,7 +23,7 @@ func _process(delta):
 		GameManager.can_parry = false
 		await get_tree().create_timer(1.7).timeout
 		parryinc = true
-		await get_tree().create_timer(10).timeout
+		await get_tree().create_timer(8.2).timeout
 		progress_bar.value = 100
 		parryinc = false
 		GameManager.can_parry = true

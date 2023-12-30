@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ciyixr6eussw4"]
+[gd_scene load_steps=14 format=3 uid="uid://ciyixr6eussw4"]
 
 [ext_resource type="FontFile" uid="uid://h3wwxtbritps" path="res://04b_30/04B_30__.TTF" id="2_3l62u"]
 [ext_resource type="Script" path="res://lore/lorescroll.gd" id="2_bk6v8"]
 [ext_resource type="Texture2D" uid="uid://k4rrls0tnho0" path="res://GUI.png" id="3_y5krl"]
 [ext_resource type="Script" path="res://lore/skip.gd" id="4_6icen"]
 [ext_resource type="AudioStream" uid="uid://bs41wg3xd8fp8" path="res://music/Lore_music.mp3" id="5_xevlk"]
+[ext_resource type="Texture2D" uid="uid://dh0wrvsyebilb" path="res://old paper.jpg" id="6_vt1p6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tnaaa"]
 line_spacing = 100.0
@@ -23,26 +24,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl55o"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ray33"]
+texture = ExtResource("3_y5krl")
+region_rect = Rect2(145, 65, 46, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nfsl"]
 texture = ExtResource("3_y5krl")
@@ -80,7 +64,7 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("2_3l62u")
 Button/styles/disabled = SubResource("StyleBoxFlat_kemcq")
-Button/styles/focus = SubResource("StyleBoxFlat_fl55o")
+Button/styles/focus = SubResource("StyleBoxTexture_ray33")
 Button/styles/hover = SubResource("StyleBoxTexture_3nfsl")
 Button/styles/normal = SubResource("StyleBoxTexture_w23og")
 Button/styles/pressed = SubResource("StyleBoxTexture_tshf6")
@@ -90,17 +74,25 @@ Button/styles/pressed = SubResource("StyleBoxTexture_tshf6")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_bk6v8")
 
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+z_index = -1
+position = Vector2(598, 307)
+scale = Vector2(5, 5)
+texture = ExtResource("6_vt1p6")
+
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 2
 motion_mirroring = Vector2(0, 20000)
 
 [node name="Node2D" type="Node2D" parent="ParallaxBackground/ParallaxLayer"]
-z_index = 2
+z_index = -21
+position = Vector2(0, -264)
 
 [node name="Label" type="Label" parent="ParallaxBackground/ParallaxLayer/Node2D"]
 offset_left = 5.0
 offset_top = 549.0
 offset_right = 1174.0
-offset_bottom = 1944.0
+offset_bottom = 2187.0
 text = "On one fateful morning, melon boy came home from a day 
 of work at his restaurant and found his house destroyed. 
 He found out that the veggies, who ran the opposing 
@@ -108,6 +100,10 @@ restaurant destroyed his house. His sous chef, the
 blueberry, had given them the location of his house and 
 had joined the veggies. Enraged, he took his trusty knife 
 and deflection charm and went to avenge his house. 
+However, the veggies had  armed themselves, with
+elemental charms. The Pepper put it into his chef's
+hat, and the blueberry infused the power into his shades.
+Despite this,
 
 He, in fact, would not let this slide."
 label_settings = SubResource("LabelSettings_tnaaa")

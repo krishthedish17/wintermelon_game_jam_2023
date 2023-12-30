@@ -24,6 +24,7 @@ func _ready():
 func _process(delta):
 	if shooting == true && payback == false:
 		GameManager.is_berry_shot = true
+		
 		bullet_sprite.play("default")
 		shooting = true
 		self.visible = true
@@ -43,6 +44,7 @@ func _process(delta):
 			GameManager.is_berry_shot = false
 	if parried == true && payback == false:
 		bullet_sprite.play("default")
+		
 		shooting = false
 		GameManager.is_berry_shot = true
 		parried = true
@@ -60,6 +62,7 @@ func _process(delta):
 			parried = false
 	if shooting == true && payback == true && GameManager.berry_hit == true:
 		GameManager.is_berry_shot = true
+		
 		bullet_sprite.play("default")
 		shooting = true
 		self.visible = true
@@ -87,6 +90,7 @@ func _process(delta):
 		GameManager.is_berry_shot = false
 	if parried == true && payback == true && GameManager.berry_hit == true:
 		bullet_sprite.play("default")
+		
 		shooting = false
 		GameManager.is_berry_shot = true
 		parried = true
@@ -106,7 +110,7 @@ func _process(delta):
 
 func _on_bullet_connected(body):
 	if body.is_in_group("player"):
-		print("bro got shot rip")
+		print("blueberry shot")
 		body.health_loss()
 		position.x = original_pos
 		position.y = original_height

@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://dejxi301y0ge8"]
+[gd_scene load_steps=154 format=3 uid="uid://dejxi301y0ge8"]
 
 [ext_resource type="Script" path="res://Betarying blueberry/blueberrybg.gd" id="1_by880"]
 [ext_resource type="Texture2D" uid="uid://duu2vfooiq1a3" path="res://blueberry bg/layers/far.png" id="1_kyplk"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" path="res://Betarying blueberry/try again.gd" id="22_n6b6u"]
 [ext_resource type="AudioStream" uid="uid://clahocua0jiuq" path="res://music/blueberry.mp3" id="32_4g3h8"]
 [ext_resource type="AudioStream" uid="uid://uk4wlriwct51" path="res://music/death_ost.mp3" id="33_gnpmy"]
+[ext_resource type="PackedScene" uid="uid://ciqka7qqkrjqs" path="res://pause/pause_controller.tscn" id="33_jlyeh"]
 [ext_resource type="AudioStream" uid="uid://bk57crff5o4xm" path="res://music/win_ost.mp3" id="34_12hjh"]
 [ext_resource type="Script" path="res://Betarying blueberry/death music.gd" id="34_svtsv"]
 [ext_resource type="Script" path="res://Betarying blueberry/win music.gd" id="36_uj2tc"]
@@ -1215,7 +1216,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nybt7"]
-size = Vector2(225, 178.5)
+size = Vector2(186.5, 149.25)
 
 [sub_resource type="Animation" id="Animation_hepie"]
 length = 0.001
@@ -1635,8 +1636,10 @@ _data = {
 }
 
 [node name="Betraying blueberry" type="Node2D"]
+process_mode = 3
 
 [node name="bg" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="bg"]
 script = ExtResource("1_by880")
@@ -1701,12 +1704,14 @@ position = Vector2(23, 314)
 shape = SubResource("RectangleShape2D_8amjg")
 
 [node name="player_health" parent="." instance=ExtResource("6_qhrqu")]
+process_mode = 1
 
 [node name="melonboy" parent="player_health" instance=ExtResource("7_5vgum")]
 z_index = 3
 position = Vector2(198, 300)
 
 [node name="blueberry" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("8_21aao")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="blueberry"]
@@ -1718,14 +1723,16 @@ shape = SubResource("RectangleShape2D_hslgv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="blueberry/CharacterBody2D"]
 position = Vector2(903, 296)
 sprite_frames = SubResource("SpriteFrames_hb6tb")
-animation = &"intro"
+animation = &"berry shot"
 autoplay = "idle"
+frame = 4
+frame_progress = 0.277439
 
 [node name="Area2D" type="Area2D" parent="blueberry/CharacterBody2D"]
-position = Vector2(37, 4)
+position = Vector2(-62, 26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/CharacterBody2D/Area2D"]
-position = Vector2(864.5, 301.25)
+position = Vector2(962, 282)
 shape = SubResource("RectangleShape2D_nybt7")
 
 [node name="hit player" type="AnimationPlayer" parent="blueberry"]
@@ -1734,6 +1741,7 @@ libraries = {
 }
 
 [node name="projectiles" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="hurricane" type="CharacterBody2D" parent="projectiles"]
 position = Vector2(1560, 287)
@@ -1825,7 +1833,7 @@ sprite_frames = ExtResource("17_tsbe1")
 
 [node name="blueberry shot" type="CharacterBody2D" parent="projectiles"]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
+position = Vector2(769, 327)
 script = ExtResource("9_fn2ek")
 bullet_fall = -30
 rotation_val = 270
@@ -1874,7 +1882,7 @@ flip_h = true
 
 [node name="blueberry shot2" type="CharacterBody2D" parent="projectiles"]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
+position = Vector2(769, 327)
 script = ExtResource("9_fn2ek")
 bullet_fall = 0
 rotation_val = 1
@@ -1897,7 +1905,7 @@ sprite_frames = ExtResource("19_2sbeo")
 
 [node name="blueberry shot3" type="CharacterBody2D" parent="projectiles"]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
+position = Vector2(769, 327)
 script = ExtResource("9_fn2ek")
 bullet_fall = -45
 rotation_val = 245
@@ -1920,7 +1928,7 @@ sprite_frames = ExtResource("19_2sbeo")
 
 [node name="blueberry shot4" type="CharacterBody2D" parent="projectiles"]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
+position = Vector2(769, 327)
 script = ExtResource("9_fn2ek")
 bullet_fall = -200
 rotation_val = -45
@@ -2038,6 +2046,7 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = ExtResource("19_2sbeo")
 
 [node name="boss ui" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="boss ui"]
 z_index = 1
@@ -2086,6 +2095,7 @@ offset_left = -164.0
 offset_top = 280.0
 offset_right = 190.0
 offset_bottom = 311.0
+focus_neighbor_top = NodePath("../Button2")
 theme = ExtResource("21_tdmos")
 text = "Return to menu"
 metadata/_edit_use_anchors_ = true
@@ -2095,6 +2105,7 @@ offset_left = -174.0
 offset_top = 216.0
 offset_right = 180.0
 offset_bottom = 247.0
+focus_neighbor_bottom = NodePath("../Button")
 theme = ExtResource("21_tdmos")
 text = "Try Again"
 script = ExtResource("22_n6b6u")
@@ -2130,21 +2141,27 @@ text = "VANQUISHED"
 label_settings = SubResource("LabelSettings_klx7t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_8ixhm")
 }
 
 [node name="bg music" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = ExtResource("32_4g3h8")
 autoplay = true
 
 [node name="death music" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = ExtResource("33_gnpmy")
 script = ExtResource("34_svtsv")
 
 [node name="win music" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = ExtResource("34_12hjh")
 script = ExtResource("36_uj2tc")
+
+[node name="PauseController" parent="." instance=ExtResource("33_jlyeh")]
 
 [connection signal="area_entered" from="blueberry/CharacterBody2D/Area2D" to="blueberry" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="blueberry/CharacterBody2D/Area2D" to="blueberry" method="_on_area_2d_body_entered"]

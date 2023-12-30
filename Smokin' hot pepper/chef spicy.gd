@@ -22,14 +22,16 @@ var started_laser = false
 var losing_health = false
 var dead = false
 var started_fight = false
+var laser_last_attack = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = 1
+	health = 100
 	GameManager.is_tutorial = false
 	GameManager.health = 3
 	dead = false
 	texture_rect.visible = false
+	laser_last_attack = false
 	sprite.play("intro")
 	await get_tree().create_timer(2).timeout
 	started_fight = true
@@ -56,7 +58,7 @@ func attack():
 		var current_attack = boss_attack.randi_range(1, 5)
 		if GameManager.is_pepper_shot:
 			current_attack = boss_attack.randi_range(2, 4)
-		if GameManager.is_beam:
+		if GameManager.is_beam || laser_last_attack == true:
 			while current_attack == 2:
 				current_attack = boss_attack.randi_range(1, 5)
 		if GameManager.is_fiend:
@@ -65,26 +67,33 @@ func attack():
 		if GameManager.is_smoke:
 			while current_attack == 4:
 				current_attack = boss_attack.randi_range(1, 5)
+		
 		can_attack = false
+		
 		print("attack picked")
 		if (current_attack == 1 || current_attack == 5) && (GameManager.is_pepper_shot == false):
 			pepper_shot = true
 			await get_tree().create_timer(1.7).timeout
 			GameManager.pepper_shot = true
 			await get_tree().create_timer(2.4).timeout
+			laser_last_attack = false
 		if current_attack == 2 && GameManager.is_beam == false:
 			charge_laser = true
+			print("laser")
 			await get_tree().create_timer(1.8).timeout
 			GameManager.pepper_laser = true
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(3.2).timeout
+			laser_last_attack = true
 		if current_attack == 3 && GameManager.is_fiend == false:
 			fiend = true
 			await get_tree().create_timer(0.3).timeout
 			GameManager.pepper_fiend = true
+			laser_last_attack = false
 		if current_attack == 4 && GameManager.is_smoke == false:
 			smoke = true
 			await get_tree().create_timer(0.5).timeout
 			GameManager.pepper_smoke = true
+			laser_last_attack = false
 		current_attack = 0
 		await get_tree().create_timer(1.5).timeout
 		can_attack = true
@@ -113,6 +122,7 @@ func taking_damage():
 		sprite.play("Idle")
 	if charge_laser == true && dead == false:
 		sprite.play("fire")
+		print("laser anim")
 		await get_tree().create_timer(5).timeout
 		charge_laser = false
 	if fiend == true && dead == false:
@@ -132,7 +142,10 @@ func health_loss():
 	if losing_health == true:
 		losing_health = false
 		for i in range(10):
-			health -= 0.02083333333
+			if GameManager.parry_hit == true:
+				health -= 0.04166666667
+			else:
+				health -= 0.02083333333
 			print("health" + str(health))
 			await get_tree().create_timer(0.2).timeout
 	

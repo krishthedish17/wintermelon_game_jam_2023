@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=3 uid="uid://7pf46cjjeod1"]
+[gd_scene load_steps=180 format=3 uid="uid://7pf46cjjeod1"]
 
 [ext_resource type="Texture2D" uid="uid://b7xlnd3dc1jao" path="res://volcano bg.png" id="1_i6a04"]
 [ext_resource type="PackedScene" uid="uid://qms3ajccrajl" path="res://player_health_bar/player_health.tscn" id="2_613tp"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://bk57crff5o4xm" path="res://music/win_ost.mp3" id="28_b4wn5"]
 [ext_resource type="Script" path="res://Smokin' hot pepper/death music.gd" id="28_xi68g"]
 [ext_resource type="Script" path="res://Smokin' hot pepper/win music.gd" id="30_1uk3w"]
+[ext_resource type="PackedScene" uid="uid://ciqka7qqkrjqs" path="res://pause/pause_controller.tscn" id="31_vspca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7m4a"]
 size = Vector2(77, 514)
@@ -963,26 +964,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl55o"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fal77"]
+texture = ExtResource("21_al8y1")
+region_rect = Rect2(145, 65, 46, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nfsl"]
 texture = ExtResource("21_al8y1")
@@ -1020,10 +1004,14 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 15
 Button/fonts/font = ExtResource("19_0rwub")
 Button/styles/disabled = SubResource("StyleBoxFlat_kemcq")
-Button/styles/focus = SubResource("StyleBoxFlat_fl55o")
+Button/styles/focus = SubResource("StyleBoxTexture_fal77")
 Button/styles/hover = SubResource("StyleBoxTexture_3nfsl")
 Button/styles/normal = SubResource("StyleBoxTexture_w23og")
 Button/styles/pressed = SubResource("StyleBoxTexture_tshf6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jmanq"]
+texture = ExtResource("21_al8y1")
+region_rect = Rect2(145, 65, 46, 14)
 
 [sub_resource type="Theme" id="Theme_5fo1l"]
 default_font = ExtResource("19_0rwub")
@@ -1047,7 +1035,7 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 15
 Button/fonts/font = ExtResource("19_0rwub")
 Button/styles/disabled = SubResource("StyleBoxFlat_kemcq")
-Button/styles/focus = SubResource("StyleBoxFlat_fl55o")
+Button/styles/focus = SubResource("StyleBoxTexture_jmanq")
 Button/styles/hover = SubResource("StyleBoxTexture_3nfsl")
 Button/styles/normal = SubResource("StyleBoxTexture_w23og")
 Button/styles/pressed = SubResource("StyleBoxTexture_tshf6")
@@ -1171,35 +1159,43 @@ _data = {
 }
 
 [node name="Smokin\' hot pepper" type="Node2D"]
+process_mode = 3
 position = Vector2(17, -34)
 
 [node name="melonboy" parent="." instance=ExtResource("3_ukl5y")]
+process_mode = 1
 z_index = 1
 position = Vector2(140, 388)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+process_mode = 1
 texture_filter = 1
 position = Vector2(567, 359.188)
 scale = Vector2(0.75, 0.769152)
 texture = ExtResource("1_i6a04")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Sprite2D"]
+process_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/CharacterBody2D"]
+process_mode = 1
 position = Vector2(-830.667, -126.357)
 scale = Vector2(1.33333, 1.30013)
 shape = SubResource("RectangleShape2D_g7m4a")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/CharacterBody2D"]
+process_mode = 1
 position = Vector2(808, -106.855)
 scale = Vector2(1.33333, 1.30013)
 shape = SubResource("RectangleShape2D_g7m4a")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/CharacterBody2D"]
+process_mode = 1
 position = Vector2(-25.5, -434.488)
 shape = SubResource("RectangleShape2D_gr6ty")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+process_mode = 1
 texture_filter = 1
 position = Vector2(570, 531)
 scale = Vector2(0.75, 0.75)
@@ -1214,6 +1210,7 @@ position = Vector2(1.33331, -13.3333)
 shape = SubResource("RectangleShape2D_dep3v")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
+process_mode = 1
 texture_filter = 1
 position = Vector2(539, 365)
 scale = Vector2(0.51348, 0.75)
@@ -1228,6 +1225,7 @@ position = Vector2(6.81616, -4)
 shape = SubResource("RectangleShape2D_4dfa3")
 
 [node name="chef_spicy" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("4_hcujb")
 
 [node name="pepper shot" type="CharacterBody2D" parent="chef_spicy"]
@@ -1470,6 +1468,7 @@ script = ExtResource("8_jgwdr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/spicy fiends/spicy fiends"]
 position = Vector2(986.5, 477.5)
 shape = SubResource("RectangleShape2D_j18ec")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chef_spicy/spicy fiends/spicy fiends"]
 position = Vector2(979, 467)
@@ -1493,6 +1492,7 @@ script = ExtResource("8_jgwdr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/spicy fiends/spicy fiends2"]
 position = Vector2(986.5, 477.5)
 shape = SubResource("RectangleShape2D_j18ec")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chef_spicy/spicy fiends/spicy fiends2"]
 position = Vector2(979, 467)
@@ -1516,6 +1516,7 @@ script = ExtResource("8_jgwdr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chef_spicy/spicy fiends/spicy fiends3"]
 position = Vector2(988.423, 477.5)
 shape = SubResource("RectangleShape2D_j18ec")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="chef_spicy/spicy fiends/spicy fiends3"]
 position = Vector2(979, 467)
@@ -1587,6 +1588,7 @@ offset_left = 105.0
 offset_top = 375.0
 offset_right = 350.0
 offset_bottom = 406.0
+focus_neighbor_bottom = NodePath("return to menu")
 theme = SubResource("Theme_kq5y3")
 text = "Try again?"
 script = ExtResource("19_k04i4")
@@ -1597,6 +1599,7 @@ offset_left = -17.1429
 offset_top = 42.0
 offset_right = 282.857
 offset_bottom = 73.0
+focus_neighbor_top = NodePath("..")
 theme = SubResource("Theme_5fo1l")
 text = "Return to select screen?"
 
@@ -1625,10 +1628,12 @@ libraries = {
 }
 
 [node name="player_health" parent="." instance=ExtResource("2_613tp")]
+process_mode = 1
 position = Vector2(-46, 23)
 scale = Vector2(1.4, 1.4)
 
 [node name="boss ui" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="Label" type="Label" parent="boss ui"]
 offset_left = 305.0
@@ -1658,21 +1663,27 @@ sprite_frames = SubResource("SpriteFrames_exal7")
 autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_03rr8")
 }
 
 [node name="bg music" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = ExtResource("26_ckqwm")
 autoplay = true
 
 [node name="death music" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = ExtResource("27_wa2c1")
 script = ExtResource("28_xi68g")
 
 [node name="win music" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = ExtResource("28_b4wn5")
 script = ExtResource("30_1uk3w")
+
+[node name="PauseController" parent="." instance=ExtResource("31_vspca")]
 
 [connection signal="area_entered" from="chef_spicy/pepper shot/Area2D" to="chef_spicy/pepper shot" method="_on_parried"]
 [connection signal="body_entered" from="chef_spicy/pepper shot/Area2D" to="chef_spicy/pepper shot" method="_on_bullet_connected"]

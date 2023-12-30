@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var max_distance: float = -1000
 @onready var player = $"../../melonboy"
 @onready var bullet_sprite = $AnimatedSprite2D
+@onready var hitbox = $Area2D/CollisionShape2D
+
 var original_pos = position.x
 var original_height = position.y
 var distance = 0
@@ -15,16 +17,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	self.visible = false
 	shooting = false
+	hitbox.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if shooting == true:
+		hitbox.disabled = false
 		bullet_sprite.play("default")
 		GameManager.is_fiend = true
 		shooting = true
 		self.visible = true
 		position.x -= speed * delta
-		print(position.x)
 		if distance > max_distance:
 			distance = position.x - original_pos
 		else:
@@ -32,6 +35,7 @@ func _process(delta):
 			position.y = original_height
 			GameManager.is_fiend = false
 			self.visible = false
+			hitbox.disabled = true
 			distance = 0
 			GameManager.pepper_fiend = false
 			shooting = false
@@ -43,10 +47,12 @@ func _physics_process(delta):
 			position.y += gravity * delta
 func _on_bullet_connected(body):
 	if body.is_in_group("player"):
-		print("bro got shot rip")
+		print("fiend hit")
 		body.health_loss()
 		position.x = original_pos
+		position.y = original_height
 		self.visible = false
+		hitbox.disabled = true
 		GameManager.is_fiend = false
 		distance = 0
 		GameManager.pepper_fiend = false

@@ -2,13 +2,13 @@ extends Node
 
 var save_path = "user://variable.save"
 
-var main_scene: PackedScene = preload("res://main/main.tscn")
-var lore_scene: PackedScene = preload("res://lore/lore_scene.tscn")
-var tutorial: PackedScene = preload("res://levels/tutorial/tutorial.tscn")
-var select_menu: PackedScene = preload("res://select_menu/select_menu.tscn")
-var pepper_level: PackedScene = preload("res://Smokin' hot pepper/smokin'_hot_pepper.tscn")
-var berry_level: PackedScene = preload("res://Betarying blueberry/Betraying blueberry.tscn")
-var win: PackedScene = preload("res://win/win.tscn")
+var main_scene = "res://main/main.tscn"
+var lore_scene = "res://lore/lore_scene.tscn"
+var tutorial  = "res://levels/tutorial/tutorial.tscn"
+var select_menu = "res://select_menu/select_menu.tscn"
+var pepper_level = "res://Smokin' hot pepper/smokin'_hot_pepper.tscn"
+var berry_level = "res://Betarying blueberry/Betraying blueberry.tscn"
+var win = "res://win/win.tscn"
 var played_game = false
 var health = 3
 var is_tutorial = true
@@ -39,37 +39,34 @@ var berry_health: = 100
 var beat_water: = false
 var dying_boss: = false
 var won: = false
-func load_lore_scene() -> void:
-	get_tree().change_scene_to_packed(lore_scene)
-	await get_tree().create_timer(30).timeout
-	print("done")
-	GameManager.load_select_screen()
+func load_lore_scene():
+	Load.load_scene(lore_scene)
 	
 func load_main_scene() -> void:
-	get_tree().change_scene_to_packed(main_scene)
+	Load.load_scene(main_scene)
 
 func load_game_scene() -> void:
-	get_tree().change_scene_to_packed(main_scene)
+	Load.load_scene(main_scene)
 	var played_game = true
 
 func load_tutorial() -> void:
 	is_tutorial = true
-	get_tree().change_scene_to_packed(tutorial)
+	Load.load_scene(tutorial)
 
 func load_select_screen() -> void:
 	is_tutorial = false
-	get_tree().change_scene_to_packed(select_menu)
+	Load.load_scene(select_menu)
 
 func load_pepper_level() -> void:
 	is_tutorial = false
-	get_tree().change_scene_to_packed(pepper_level)
+	Load.load_scene(pepper_level)
 	
 func load_berry_level() -> void:
 	is_tutorial = false
-	get_tree().change_scene_to_packed(berry_level)
+	Load.load_scene(berry_level)
 
 func load_win_scene() -> void:
 	is_tutorial = false
-	get_tree().change_scene_to_packed(win)
+	Load.load_scene(win)
 
 

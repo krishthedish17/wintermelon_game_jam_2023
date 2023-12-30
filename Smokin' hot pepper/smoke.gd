@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var player = $"../../melonboy"
 @onready var bullet_sprite = $AnimatedSprite2D
 @export var bullet_fall = -30
+@onready var hitbox = $Area2D/CollisionShape2D
+
 var original_pos = position.x
 var original_height = position.y
 var distance = 0
@@ -15,10 +17,12 @@ var going_down = true
 func _ready():
 	self.visible = false
 	shooting = false
+	hitbox.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if shooting == true:
+		hitbox.disabled = false
 		bullet_sprite.play("default")
 		GameManager.is_smoke = true
 		shooting = true
@@ -38,6 +42,7 @@ func _process(delta):
 			distance = position.x - original_pos
 		else:
 			position.x = original_pos
+			hitbox.disabled = true
 			position.y = original_height
 			GameManager.is_smoke = false
 			self.visible = false
@@ -48,8 +53,9 @@ func _process(delta):
 
 func _on_bullet_connected(body):
 	if body.is_in_group("player"):
-		print("bro got shot rip")
+		print("smoke")
 		body.health_loss()
+		hitbox.disabled = true
 		position.x = original_pos
 		position.y = original_height
 		self.visible = false

@@ -30,20 +30,13 @@ var attacking = false
 var play_dead = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = 1
+	health = 100
 	GameManager.is_tutorial = false
 	GameManager.health = 3
 	dead = false
 	started_fight = false
 	texture_rect.visible = false
 	attacking = false
-	print("ball_charge" + str(ball_charge))
-	print("wave" + str(wave))
-	print("hit" + str(hit))
-	print(hurricane)
-	print(berry_shot)
-	print(dead)
-	print(mine)
 	#texture_rect.visible = false
 	sprite.play("intro")
 	await get_tree().create_timer(2.1).timeout
@@ -145,6 +138,7 @@ func _on_area_2d_area_entered(area):
 			await get_tree().create_timer(0.1).timeout
 			hit = true
 			GameManager.fire_hit = true
+			await get_tree().create_timer(0.2).timeout
 			invuln = true
 func taking_damage():
 	if hit == true || GameManager.parry_hit == true:
@@ -160,7 +154,6 @@ func taking_damage():
 	if attacking == false:
 		#ball_charge == false && wave == false && hit == false && hurricane == false && berry_shot == false && dead == false && mine == false
 		sprite.play("Idle")
-		print("idle")
 	
 	if ball_charge == true && dead == false && attacking == true:
 		sprite.play("ball")
@@ -188,9 +181,9 @@ func health_loss():
 		losing_health = false
 		for i in range(10):
 			if GameManager.parry_hit == true:
-				health -= 0.08333333333
-			else:
 				health -= 0.04166666667
+			else:
+				health -= 0.02083333333
 			await get_tree().create_timer(0.2).timeout
 	
 func death():
@@ -224,18 +217,16 @@ func ball():
 func _on_area_2d_body_entered(body):
 	if is_ball:
 		if body.is_in_group("player"):
-			print("bro got shot rip")
+			print("rolled")
 			body.health_loss()
 
 func roll():
-	print("ball charge" + str(ball_charge))
 	if ball_charge:
 		$CharacterBody2D.position.y = 13
 		sprite.rotation_degrees -= 5
 		await get_tree().create_timer(0.1).timeout
 	if not ball_charge:
 		$CharacterBody2D.position.y = 0
-		print("rotation_degrees"  + str(rotation_degrees))
 		if sprite.rotation_degrees < 0:
 			if sprite.rotation_degrees <= -360:
 				sprite.rotation_degrees += 360

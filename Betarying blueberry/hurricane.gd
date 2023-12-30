@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var payback = false
 @export var bullet_fall = 1
 @export var rotation_val = 45
+@onready var hitbox = $Area2D/CollisionShape2D
+
 
 var original_pos = position.x
 var original_height = position.y
@@ -20,12 +22,14 @@ var parried = false
 func _ready():
 	self.visible = false
 	shooting = false
+	hitbox.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if shooting == true:
 		GameManager.hurricane = true
 		GameManager.is_hurricane = true
+		hitbox.disabled = false
 		bullet_sprite.play("default")
 		shooting = true
 		self.visible = true
@@ -35,13 +39,14 @@ func _process(delta):
 		self.visible = false
 		distance = 0
 		GameManager.hurricane = false
+		hitbox.disabled = true
 		shooting = false
 		GameManager.is_hurricane = false
 	shoot()
 
 func _on_bullet_connected(body):
 	if body.is_in_group("player"):
-		print("bro got shot rip")
+		print("hurricane")
 		body.health_loss()
 		position.x = original_pos
 		position.y = original_height

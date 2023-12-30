@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://i8sr6qp5njbc"]
+[gd_scene load_steps=20 format=3 uid="uid://i8sr6qp5njbc"]
 
 [ext_resource type="Script" path="res://main/menubg.gd" id="1_c0ted"]
 [ext_resource type="Texture2D" uid="uid://bhpkgepsa0v5c" path="res://parallax_field.png" id="1_nbdtj"]
@@ -8,10 +8,15 @@
 [ext_resource type="Script" path="res://main/buttons.gd" id="4_mumir"]
 [ext_resource type="Texture2D" uid="uid://dt1rs03who2p6" path="res://melon boy sprites.png" id="6_7tvkc"]
 [ext_resource type="AudioStream" uid="uid://skwnuu78vsos" path="res://music/Menu.mp3" id="8_y6jkd"]
+[ext_resource type="Texture2D" uid="uid://dv1dqnypuie7k" path="res://Fire boss sprites/Pepper Boss/Idle.png" id="9_8023k"]
+[ext_resource type="Texture2D" uid="uid://bl0q08l82yhnb" path="res://Betarying blueberry/blueberry/IDLE_Sheet.png" id="10_lad6t"]
 
 [sub_resource type="Theme" id="Theme_fk2mt"]
 default_font = ExtResource("3_8hcac")
 default_font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_cw2qe"]
+font_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kemcq"]
 content_margin_left = 4.0
@@ -25,26 +30,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl55o"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_la6v0"]
+texture = ExtResource("4_g1dru")
+region_rect = Rect2(145, 65, 46, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nfsl"]
 texture = ExtResource("4_g1dru")
@@ -82,10 +70,13 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("3_8hcac")
 Button/styles/disabled = SubResource("StyleBoxFlat_kemcq")
-Button/styles/focus = SubResource("StyleBoxFlat_fl55o")
+Button/styles/focus = SubResource("StyleBoxTexture_la6v0")
 Button/styles/hover = SubResource("StyleBoxTexture_3nfsl")
 Button/styles/normal = SubResource("StyleBoxTexture_w23og")
 Button/styles/pressed = SubResource("StyleBoxTexture_tshf6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_f8jxr"]
+font = ExtResource("3_8hcac")
 
 [node name="main" type="Node2D"]
 
@@ -152,6 +143,15 @@ offset_bottom = 237.0
 theme = SubResource("Theme_fk2mt")
 text = "CHARM CLASH"
 
+[node name="Label2" type="Label" parent="text"]
+offset_left = 363.0
+offset_top = 45.0
+offset_right = 1385.0
+offset_bottom = 149.0
+theme = SubResource("Theme_fk2mt")
+text = "MELONIC REVENGE"
+label_settings = SubResource("LabelSettings_cw2qe")
+
 [node name="buttons" type="Node" parent="."]
 script = ExtResource("4_mumir")
 
@@ -160,6 +160,8 @@ offset_left = 439.0
 offset_top = 279.0
 offset_right = 676.0
 offset_bottom = 399.0
+focus_neighbor_left = NodePath("../Button2")
+focus_neighbor_right = NodePath("../Button3")
 theme = SubResource("Theme_v1ns1")
 text = "Play"
 
@@ -168,6 +170,7 @@ offset_left = 122.0
 offset_top = 499.0
 offset_right = 259.0
 offset_bottom = 574.0
+focus_neighbor_right = NodePath("../Button")
 theme = ExtResource("4_fip1k")
 text = "Save"
 
@@ -176,6 +179,7 @@ offset_left = 894.0
 offset_top = 511.0
 offset_right = 1031.0
 offset_bottom = 586.0
+focus_neighbor_left = NodePath("../Button")
 theme = ExtResource("4_fip1k")
 text = "Load"
 
@@ -188,6 +192,29 @@ region_rect = Rect2(14, 14, 47, 42)
 [node name="menu music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_y6jkd")
 autoplay = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 363.0
+offset_top = 466.0
+offset_right = 785.0
+offset_bottom = 489.0
+text = "Left click to access buttons on pc
+B to press buttons on controller"
+label_settings = SubResource("LabelSettings_f8jxr")
+
+[node name="chili man" type="Sprite2D" parent="."]
+position = Vector2(1031, 97)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_8023k")
+region_enabled = true
+region_rect = Rect2(590, 22, 121, 210)
+
+[node name="blueberry" type="Sprite2D" parent="."]
+position = Vector2(923, 105)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_lad6t")
+region_enabled = true
+region_rect = Rect2(52, 42, 144, 169)
 
 [connection signal="pressed" from="buttons/Button" to="buttons" method="_on_start_pressed"]
 [connection signal="pressed" from="buttons/Button2" to="buttons" method="_on_savew"]

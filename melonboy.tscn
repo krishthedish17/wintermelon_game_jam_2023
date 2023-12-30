@@ -1,9 +1,13 @@
-[gd_scene load_steps=54 format=3 uid="uid://dg2uqy7ifa336"]
+[gd_scene load_steps=58 format=3 uid="uid://dg2uqy7ifa336"]
 
 [ext_resource type="Script" path="res://melonboy/CharacterBody2D.gd" id="1_qc8ra"]
 [ext_resource type="Texture2D" uid="uid://dblug0shsmj4h" path="res://Melon_Attack_fr-Sheet.png" id="2_kyslp"]
 [ext_resource type="Texture2D" uid="uid://dt1rs03who2p6" path="res://melon boy sprites.png" id="3_uo6nn"]
 [ext_resource type="Texture2D" uid="uid://bgmek01gjf6ap" path="res://MELON_PARRY-Sheet-Sheet-export.png" id="4_4iy02"]
+[ext_resource type="AudioStream" uid="uid://ffokubcyfuax" path="res://knife-slice-41231.mp3" id="5_ge4cr"]
+[ext_resource type="AudioStream" uid="uid://cn2dbmvsncye3" path="res://shield-guard-6963.mp3" id="6_ymy5s"]
+[ext_resource type="AudioStream" uid="uid://dyhcyfn0dd46k" path="res://fast-simple-chop-5-6270.mp3" id="7_jv2b4"]
+[ext_resource type="AudioStream" uid="uid://cucyvda7emfmu" path="res://punch-1-166694.mp3" id="8_wltlx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3e3h8"]
 size = Vector2(50, 48)
@@ -402,10 +406,25 @@ position = Vector2(300.75, 600)
 shape = SubResource("RectangleShape2D_suxxd")
 
 [node name="parry hitbox" type="Area2D" parent="CharacterBody2D" groups=["parry"]]
-position = Vector2(-250, -602)
+position = Vector2(-230, -599)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/parry hitbox"]
 position = Vector2(253, 600)
 shape = SubResource("RectangleShape2D_jkwv4")
+
+[node name="knife swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ge4cr")
+volume_db = -16.22
+
+[node name="parry sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ymy5s")
+volume_db = -15.0
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_jv2b4")
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_wltlx")
+volume_db = -10.0
 
 [connection signal="timeout" from="CharacterBody2D/knife/knife cooldown" to="CharacterBody2D" method="_on_knife_cooldown_timeout"]

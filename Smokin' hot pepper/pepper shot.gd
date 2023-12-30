@@ -109,7 +109,7 @@ func _process(delta):
 
 func _on_bullet_connected(body):
 	if body.is_in_group("player"):
-		print("bro got shot rip")
+		print("pepper hit")
 		body.health_loss()
 		position.x = original_pos
 		position.y = original_height

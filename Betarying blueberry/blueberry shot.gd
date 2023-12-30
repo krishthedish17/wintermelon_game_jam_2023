@@ -14,6 +14,7 @@ var distance = 0
 var shooting = false
 var parried = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.visible = false

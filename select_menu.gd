@@ -22,3 +22,8 @@ func _on_tutorial_pressed():
 func _on_fire_pressed():
 	GameManager.load_pepper_level()
 	GameManager.is_tutorial = false
+
+
+func _on_berry_pressed():
+	GameManager.load_berry_level()
+	GameManager.is_tutorial = false

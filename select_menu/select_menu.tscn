@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://select_menu.gd" id="3_umrbf"]
 [ext_resource type="Script" path="res://select_menu/fire_sprite.gd" id="4_h4txe"]
 [ext_resource type="Theme" uid="uid://cwpttvgwu6d7k" path="res://defaultbutton/defaultbutton.tres" id="4_hgdcj"]
-[ext_resource type="Texture2D" uid="uid://bycyefv7b1nh7" path="res://Fire boss sprites/Pepper Boss/smoke.png" id="5_omi8k"]
+[ext_resource type="Texture2D" uid="uid://dygnmhxtw34sl" path="res://Death_pepper.png" id="5_86p4q"]
 
 [node name="select_menu" type="Node2D"]
 
@@ -42,8 +42,9 @@ region_rect = Rect2(3, 5, 26, 23)
 [node name="Sprite2D5" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(889, 211)
-texture = ExtResource("5_omi8k")
-region_rect = Rect2(329, 20, 126, 210)
+texture = ExtResource("5_86p4q")
+region_enabled = true
+region_rect = Rect2(7014, 144, 43, 98)
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("3_umrbf")
@@ -74,3 +75,4 @@ text = "Betraying Blueberry"
 
 [connection signal="pressed" from="Node/Button" to="Node" method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Node/Button2" to="Node" method="_on_fire_pressed"]
+[connection signal="pressed" from="Node/Button3" to="Node" method="_on_berry_pressed"]

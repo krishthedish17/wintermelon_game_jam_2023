@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dejxi301y0ge8"]
+[gd_scene load_steps=49 format=3 uid="uid://dejxi301y0ge8"]
 
 [ext_resource type="Script" path="res://Betarying blueberry/blueberrybg.gd" id="1_by880"]
 [ext_resource type="Texture2D" uid="uid://duu2vfooiq1a3" path="res://blueberry bg/layers/far.png" id="1_kyplk"]
@@ -11,6 +11,17 @@
 [ext_resource type="Texture2D" uid="uid://fd1poy2ww3m1" path="res://Fire boss sprites/Pepper Boss/Sprite-0004-Sheet.png" id="8_r4xft"]
 [ext_resource type="Script" path="res://Betarying blueberry/blueberry shot.gd" id="9_fn2ek"]
 [ext_resource type="Texture2D" uid="uid://bycyefv7b1nh7" path="res://Fire boss sprites/Pepper Boss/smoke.png" id="9_nh8gw"]
+[ext_resource type="Script" path="res://Betarying blueberry/wave.gd" id="12_drunk"]
+[ext_resource type="Script" path="res://Betarying blueberry/mine.gd" id="12_kmbhi"]
+[ext_resource type="Script" path="res://Betarying blueberry/hurricane.gd" id="13_hl4gq"]
+[ext_resource type="Texture2D" uid="uid://dcf8jq3urxprd" path="res://outer.png" id="15_vjk52"]
+[ext_resource type="Texture2D" uid="uid://l2j65aot584l" path="res://progress.png" id="16_e0u2k"]
+[ext_resource type="Script" path="res://Betarying blueberry/berry_health.gd" id="17_8kgty"]
+[ext_resource type="FontFile" uid="uid://h3wwxtbritps" path="res://04b_30/04B_30__.TTF" id="17_40o3y"]
+[ext_resource type="Texture2D" uid="uid://bys3hcwhbiyon" path="res://blueberry ui.png" id="18_x5okc"]
+[ext_resource type="Script" path="res://Betarying blueberry/loss screen.gd" id="20_w0mvn"]
+[ext_resource type="Theme" uid="uid://cwpttvgwu6d7k" path="res://defaultbutton/defaultbutton.tres" id="21_tdmos"]
+[ext_resource type="Script" path="res://Betarying blueberry/try again.gd" id="22_n6b6u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lgywq"]
 texture = ExtResource("5_a4t7c")
@@ -191,6 +202,43 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nybt7"]
 size = Vector2(225, 178.5)
 
+[sub_resource type="Animation" id="Animation_hepie"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h6mox"]
+resource_name = "hit"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yk6jm"]
+_data = {
+"RESET": SubResource("Animation_hepie"),
+"hit": SubResource("Animation_h6mox")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8uwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e6r8x"]
@@ -210,28 +258,73 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_h6mox"]
-resource_name = "hit"
-length = 0.8
+[sub_resource type="LabelSettings" id="LabelSettings_klx7t"]
+font = ExtResource("17_40o3y")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_eia0h"]
+font = ExtResource("17_40o3y")
+font_size = 30
+font_color = Color(0, 0.67451, 1, 1)
+
+[sub_resource type="Animation" id="Animation_jecjj"]
+resource_name = "win"
+length = 5.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/AnimatedSprite2D:self_modulate")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 5.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg/ParallaxBackground/ParallaxLayer/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bg/ParallaxBackground/ParallaxLayer3/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bg/ParallaxBackground/ParallaxLayer2/Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_hepie"]
+[sub_resource type="Animation" id="Animation_1eyc1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D/AnimatedSprite2D:self_modulate")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -240,11 +333,47 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg/ParallaxBackground/ParallaxLayer/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bg/ParallaxBackground/ParallaxLayer3/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bg/ParallaxBackground/ParallaxLayer2/Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yk6jm"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ixhm"]
 _data = {
-"RESET": SubResource("Animation_hepie"),
-"hit": SubResource("Animation_h6mox")
+"RESET": SubResource("Animation_1eyc1"),
+"win": SubResource("Animation_jecjj")
 }
 
 [node name="Betraying blueberry" type="Node2D"]
@@ -339,198 +468,472 @@ autoplay = "idle"
 position = Vector2(864.5, 301.25)
 shape = SubResource("RectangleShape2D_nybt7")
 
-[node name="blueberry shot" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
-script = ExtResource("9_fn2ek")
-bullet_fall = -30
-rotation_val = 270
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_y8uwu")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="blueberry/blueberry shot"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot/Area2D"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_e6r8x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="blueberry/blueberry shot"]
-sprite_frames = SubResource("SpriteFrames_m7eyy")
-
-[node name="blueberry shot2" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
-script = ExtResource("9_fn2ek")
-bullet_fall = 0
-rotation_val = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot2"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_y8uwu")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="blueberry/blueberry shot2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot2/Area2D"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_e6r8x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="blueberry/blueberry shot2"]
-sprite_frames = SubResource("SpriteFrames_m7eyy")
-
-[node name="blueberry shot3" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
-script = ExtResource("9_fn2ek")
-bullet_fall = -45
-rotation_val = 245
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot3"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_y8uwu")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="blueberry/blueberry shot3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot3/Area2D"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_e6r8x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="blueberry/blueberry shot3"]
-sprite_frames = SubResource("SpriteFrames_m7eyy")
-
-[node name="blueberry shot4" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
-script = ExtResource("9_fn2ek")
-bullet_fall = -200
-rotation_val = -45
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot4"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_y8uwu")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="blueberry/blueberry shot4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot4/Area2D"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_e6r8x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="blueberry/blueberry shot4"]
-sprite_frames = SubResource("SpriteFrames_m7eyy")
-
-[node name="blueberry shot5" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
-script = ExtResource("9_fn2ek")
-payback = true
-bullet_fall = -30
-rotation_val = 270
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot5"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_y8uwu")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="blueberry/blueberry shot5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot5/Area2D"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_e6r8x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="blueberry/blueberry shot5"]
-sprite_frames = SubResource("SpriteFrames_m7eyy")
-
-[node name="blueberry shot6" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
-script = ExtResource("9_fn2ek")
-payback = true
-bullet_fall = 0
-rotation_val = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot6"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_y8uwu")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="blueberry/blueberry shot6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot6/Area2D"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_e6r8x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="blueberry/blueberry shot6"]
-sprite_frames = SubResource("SpriteFrames_m7eyy")
-
-[node name="blueberry shot7" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
-script = ExtResource("9_fn2ek")
-payback = true
-bullet_fall = -45
-rotation_val = 245
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot7"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_y8uwu")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="blueberry/blueberry shot7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot7/Area2D"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_e6r8x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="blueberry/blueberry shot7"]
-sprite_frames = SubResource("SpriteFrames_m7eyy")
-
-[node name="blueberry shot8" type="CharacterBody2D" parent="blueberry"]
-modulate = Color(0, 1, 0, 1)
-position = Vector2(868, 305)
-script = ExtResource("9_fn2ek")
-payback = true
-bullet_fall = -200
-rotation_val = -45
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot8"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_y8uwu")
-disabled = true
-
-[node name="Area2D" type="Area2D" parent="blueberry/blueberry shot8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blueberry/blueberry shot8/Area2D"]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_e6r8x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="blueberry/blueberry shot8"]
-sprite_frames = SubResource("SpriteFrames_m7eyy")
-
 [node name="hit player" type="AnimationPlayer" parent="blueberry"]
 libraries = {
 "": SubResource("AnimationLibrary_yk6jm")
 }
 
+[node name="projectiles" type="Node2D" parent="."]
+
+[node name="hurricane" type="CharacterBody2D" parent="projectiles"]
+position = Vector2(665, 310)
+scale = Vector2(4, 4)
+script = ExtResource("13_hl4gq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/hurricane"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/hurricane"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/hurricane/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/hurricane"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="mine" type="CharacterBody2D" parent="projectiles"]
+position = Vector2(298, 442)
+scale = Vector2(4, 1.08)
+script = ExtResource("12_kmbhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/mine"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/mine"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="mine2" type="CharacterBody2D" parent="projectiles"]
+position = Vector2(437, 442)
+scale = Vector2(4, 1.08)
+script = ExtResource("12_kmbhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine2"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/mine2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine2/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/mine2"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="mine3" type="CharacterBody2D" parent="projectiles"]
+position = Vector2(587, 442)
+scale = Vector2(4, 1.08)
+script = ExtResource("12_kmbhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine3"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/mine3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine3/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/mine3"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="mine4" type="CharacterBody2D" parent="projectiles"]
+position = Vector2(222, 441)
+scale = Vector2(4, 1.08)
+script = ExtResource("12_kmbhi")
+timing = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine4"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/mine4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine4/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/mine4"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="mine5" type="CharacterBody2D" parent="projectiles"]
+position = Vector2(361, 441)
+scale = Vector2(4, 1.08)
+script = ExtResource("12_kmbhi")
+timing = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine5"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/mine5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine5/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/mine5"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="mine6" type="CharacterBody2D" parent="projectiles"]
+position = Vector2(511, 441)
+scale = Vector2(4, 1.08)
+script = ExtResource("12_kmbhi")
+timing = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine6"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/mine6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/mine6/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/mine6"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="blueberry shot" type="CharacterBody2D" parent="projectiles"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(868, 305)
+script = ExtResource("9_fn2ek")
+bullet_fall = -30
+rotation_val = 270
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/blueberry shot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/blueberry shot"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="wave" type="CharacterBody2D" parent="projectiles"]
+position = Vector2(1166, 277)
+scale = Vector2(4, 4)
+script = ExtResource("12_drunk")
+speed = 800.0
+max_distance = -1200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/wave"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/wave"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/wave/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/wave"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="blueberry shot2" type="CharacterBody2D" parent="projectiles"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(868, 305)
+script = ExtResource("9_fn2ek")
+bullet_fall = 0
+rotation_val = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot2"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/blueberry shot2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot2/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/blueberry shot2"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="blueberry shot3" type="CharacterBody2D" parent="projectiles"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(868, 305)
+script = ExtResource("9_fn2ek")
+bullet_fall = -45
+rotation_val = 245
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot3"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/blueberry shot3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot3/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/blueberry shot3"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="blueberry shot4" type="CharacterBody2D" parent="projectiles"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(868, 305)
+script = ExtResource("9_fn2ek")
+bullet_fall = -200
+rotation_val = -45
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot4"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/blueberry shot4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot4/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/blueberry shot4"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="blueberry shot5" type="CharacterBody2D" parent="projectiles"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(868, 305)
+script = ExtResource("9_fn2ek")
+payback = true
+bullet_fall = -30
+rotation_val = 270
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot5"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/blueberry shot5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot5/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/blueberry shot5"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="blueberry shot6" type="CharacterBody2D" parent="projectiles"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(868, 305)
+script = ExtResource("9_fn2ek")
+payback = true
+bullet_fall = 0
+rotation_val = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot6"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/blueberry shot6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot6/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/blueberry shot6"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="blueberry shot7" type="CharacterBody2D" parent="projectiles"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(868, 305)
+script = ExtResource("9_fn2ek")
+payback = true
+bullet_fall = -45
+rotation_val = 245
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot7"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/blueberry shot7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot7/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/blueberry shot7"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="blueberry shot8" type="CharacterBody2D" parent="projectiles"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(868, 305)
+script = ExtResource("9_fn2ek")
+payback = true
+bullet_fall = -200
+rotation_val = -45
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot8"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_y8uwu")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="projectiles/blueberry shot8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectiles/blueberry shot8/Area2D"]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_e6r8x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectiles/blueberry shot8"]
+sprite_frames = SubResource("SpriteFrames_m7eyy")
+
+[node name="boss ui" type="Node2D" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="boss ui"]
+z_index = 1
+offset_left = 329.0
+offset_top = 62.0
+offset_right = 369.0
+offset_bottom = 102.0
+value = 100.0
+texture_under = ExtResource("15_vjk52")
+texture_progress = ExtResource("16_e0u2k")
+tint_progress = Color(1, 0, 0, 1)
+script = ExtResource("17_8kgty")
+
+[node name="Label" type="Label" parent="boss ui"]
+z_index = 1
+offset_left = 332.0
+offset_top = 18.0
+offset_right = 787.0
+offset_bottom = 63.0
+text = "Betrayin' Blueberry"
+label_settings = SubResource("LabelSettings_klx7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="boss ui"]
+z_index = 1
+position = Vector2(283, 82)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_x5okc")
+
+[node name="TextureRect" type="TextureRect" parent="boss ui"]
+offset_left = 208.0
+offset_top = 12.0
+offset_right = 677.0
+offset_bottom = 63.0
+scale = Vector2(1.52, 7.36)
+texture = ExtResource("15_vjk52")
+script = ExtResource("20_w0mvn")
+
+[node name="Sprite2D2" type="Sprite2D" parent="boss ui/TextureRect"]
+z_index = 1
+position = Vector2(226.973, 21.4674)
+scale = Vector2(0.328947, 0.0679348)
+texture = ExtResource("18_x5okc")
+
+[node name="Button" type="Button" parent="boss ui/TextureRect/Sprite2D2"]
+offset_left = -164.0
+offset_top = 280.0
+offset_right = 190.0
+offset_bottom = 311.0
+theme = ExtResource("21_tdmos")
+text = "Return to menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="boss ui/TextureRect/Sprite2D2"]
+offset_left = -174.0
+offset_top = 216.0
+offset_right = 180.0
+offset_bottom = 247.0
+theme = ExtResource("21_tdmos")
+text = "Try Again"
+script = ExtResource("22_n6b6u")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="boss ui/TextureRect/Sprite2D2"]
+z_index = 1
+offset_left = -294.0
+offset_top = 132.0
+offset_right = 318.0
+offset_bottom = 200.0
+text = "Cleary, my \"berry\" trayal
+was the right choice!"
+label_settings = SubResource("LabelSettings_eia0h")
+metadata/_edit_use_anchors_ = true
+
+[node name="win screen" type="TextureRect" parent="boss ui"]
+offset_left = 81.0
+offset_top = 102.0
+offset_right = 550.0
+offset_bottom = 153.0
+scale = Vector2(2, 3.08)
+texture = ExtResource("15_vjk52")
+
+[node name="Label2" type="Label" parent="boss ui/win screen"]
+z_index = 1
+layout_mode = 0
+offset_left = 96.0
+offset_top = 11.0
+offset_right = 551.0
+offset_bottom = 56.0
+text = "VANQUISHED"
+label_settings = SubResource("LabelSettings_klx7t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8ixhm")
+}
+
 [connection signal="area_entered" from="blueberry/CharacterBody2D/Area2D" to="blueberry" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="blueberry/CharacterBody2D/Area2D" to="blueberry" method="_on_area_2d_body_entered"]
-[connection signal="area_entered" from="blueberry/blueberry shot/Area2D" to="blueberry/blueberry shot" method="_on_parried"]
-[connection signal="body_entered" from="blueberry/blueberry shot/Area2D" to="blueberry/blueberry shot" method="_on_bullet_connected"]
-[connection signal="area_entered" from="blueberry/blueberry shot2/Area2D" to="blueberry/blueberry shot2" method="_on_parried"]
-[connection signal="body_entered" from="blueberry/blueberry shot2/Area2D" to="blueberry/blueberry shot2" method="_on_bullet_connected"]
-[connection signal="area_entered" from="blueberry/blueberry shot3/Area2D" to="blueberry/blueberry shot3" method="_on_parried"]
-[connection signal="body_entered" from="blueberry/blueberry shot3/Area2D" to="blueberry/blueberry shot3" method="_on_bullet_connected"]
-[connection signal="area_entered" from="blueberry/blueberry shot4/Area2D" to="blueberry/blueberry shot4" method="_on_parried"]
-[connection signal="body_entered" from="blueberry/blueberry shot4/Area2D" to="blueberry/blueberry shot4" method="_on_bullet_connected"]
-[connection signal="area_entered" from="blueberry/blueberry shot5/Area2D" to="blueberry/blueberry shot5" method="_on_parried"]
-[connection signal="body_entered" from="blueberry/blueberry shot5/Area2D" to="blueberry/blueberry shot5" method="_on_bullet_connected"]
-[connection signal="area_entered" from="blueberry/blueberry shot6/Area2D" to="blueberry/blueberry shot6" method="_on_parried"]
-[connection signal="body_entered" from="blueberry/blueberry shot6/Area2D" to="blueberry/blueberry shot6" method="_on_bullet_connected"]
-[connection signal="area_entered" from="blueberry/blueberry shot7/Area2D" to="blueberry/blueberry shot7" method="_on_parried"]
-[connection signal="body_entered" from="blueberry/blueberry shot7/Area2D" to="blueberry/blueberry shot7" method="_on_bullet_connected"]
-[connection signal="area_entered" from="blueberry/blueberry shot8/Area2D" to="blueberry/blueberry shot8" method="_on_parried"]
-[connection signal="body_entered" from="blueberry/blueberry shot8/Area2D" to="blueberry/blueberry shot8" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/hurricane/Area2D" to="projectiles/hurricane" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/hurricane/Area2D" to="projectiles/hurricane" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/mine/Area2D" to="projectiles/mine" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/mine/Area2D" to="projectiles/mine" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/mine2/Area2D" to="projectiles/mine2" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/mine2/Area2D" to="projectiles/mine2" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/mine3/Area2D" to="projectiles/mine3" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/mine3/Area2D" to="projectiles/mine3" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/mine4/Area2D" to="projectiles/mine4" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/mine4/Area2D" to="projectiles/mine4" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/mine5/Area2D" to="projectiles/mine5" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/mine5/Area2D" to="projectiles/mine5" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/mine6/Area2D" to="projectiles/mine6" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/mine6/Area2D" to="projectiles/mine6" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/blueberry shot/Area2D" to="projectiles/blueberry shot" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/blueberry shot/Area2D" to="projectiles/blueberry shot" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/wave/Area2D" to="projectiles/wave" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/wave/Area2D" to="projectiles/wave" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/blueberry shot2/Area2D" to="projectiles/blueberry shot2" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/blueberry shot2/Area2D" to="projectiles/blueberry shot2" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/blueberry shot3/Area2D" to="projectiles/blueberry shot3" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/blueberry shot3/Area2D" to="projectiles/blueberry shot3" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/blueberry shot4/Area2D" to="projectiles/blueberry shot4" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/blueberry shot4/Area2D" to="projectiles/blueberry shot4" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/blueberry shot5/Area2D" to="projectiles/blueberry shot5" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/blueberry shot5/Area2D" to="projectiles/blueberry shot5" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/blueberry shot6/Area2D" to="projectiles/blueberry shot6" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/blueberry shot6/Area2D" to="projectiles/blueberry shot6" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/blueberry shot7/Area2D" to="projectiles/blueberry shot7" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/blueberry shot7/Area2D" to="projectiles/blueberry shot7" method="_on_bullet_connected"]
+[connection signal="area_entered" from="projectiles/blueberry shot8/Area2D" to="projectiles/blueberry shot8" method="_on_parried"]
+[connection signal="body_entered" from="projectiles/blueberry shot8/Area2D" to="projectiles/blueberry shot8" method="_on_bullet_connected"]
+[connection signal="pressed" from="boss ui/TextureRect/Sprite2D2/Button" to="boss ui/TextureRect/Sprite2D2/Button2" method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="boss ui/TextureRect/Sprite2D2/Button2" to="boss ui/TextureRect/Sprite2D2/Button2" method="_on_pressed"]

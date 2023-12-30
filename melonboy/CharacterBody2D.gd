@@ -77,6 +77,7 @@ func _process(_delta):
 	flip_player()
 	parry()
 	death()
+	hurricane()
 	if can_attack == true:
 		if Input.is_action_just_pressed("attack"):
 			can_attack = false
@@ -146,7 +147,7 @@ func parry():
 		await get_tree().create_timer(1.7).timeout
 		parrying = false
 		$"parry hitbox/CollisionShape2D".disabled = true
-		await get_tree().create_timer(14).timeout
+		await get_tree().create_timer(8.2).timeout
 		can_parry = true
 		
 func health_loss():
@@ -156,7 +157,7 @@ func health_loss():
 		animation_player.play("invuln")
 		await get_tree().create_timer(2).timeout
 		invuln = false
-	if invuln == true:
+	if invuln == true || GameManager.dying_boss == true:
 		pass
 
 func death():
@@ -167,3 +168,9 @@ func death():
 		else:
 			queue_free()
 			
+func hurricane():
+	while GameManager.is_hurricane:
+			position.x += 0.05
+			print("hurricaning")
+			await get_tree().create_timer(0.1).timeout
+	

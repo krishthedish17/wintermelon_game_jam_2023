@@ -68,7 +68,7 @@ func attack():
 			await get_tree().create_timer(2.4).timeout
 		if current_attack == 2 && GameManager.is_beam == false:
 			charge_laser = true
-			await get_tree().create_timer(1.2).timeout
+			await get_tree().create_timer(1.8).timeout
 			GameManager.pepper_laser = true
 			await get_tree().create_timer(3).timeout
 		if current_attack == 3 && GameManager.is_fiend == false:
@@ -137,6 +137,6 @@ func death():
 		texture_rect.visible = true
 		GameManager.beat_fire = true
 		animation_player.play("win")
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(4).timeout
 		GameManager.load_select_screen()
 		queue_free()

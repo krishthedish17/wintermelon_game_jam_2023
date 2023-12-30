@@ -1,4 +1,4 @@
-extends ParallaxBackground
+extends TextureRect
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,6 +8,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	scroll_offset.x -= 40 * delta
-
+	if GameManager.health <= 0:
+		self.visible = true
+	else:
+		self.visible = false
 

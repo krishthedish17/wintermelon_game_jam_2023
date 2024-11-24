@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciqka7qqkrjqs"]
+
+[ext_resource type="Script" path="res://pause/pause.gd" id="1_ctmwv"]
+[ext_resource type="Texture2D" uid="uid://l2j65aot584l" path="res://progress.png" id="2_jm20e"]
+[ext_resource type="FontFile" uid="uid://h3wwxtbritps" path="res://04b_30/04B_30__.TTF" id="2_vcbbb"]
+[ext_resource type="AudioStream" uid="uid://cbqs6uxxf3m1e" path="res://tutorial.mp3" id="4_j4w1k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_33kqn"]
+font = ExtResource("2_vcbbb")
+
+[node name="PauseController" type="Node"]
+process_mode = 3
+script = ExtResource("1_ctmwv")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+offset_left = 375.0
+offset_top = 308.0
+offset_right = 466.0
+offset_bottom = 331.0
+text = "PAUSED: Press the pause
+button again to unpause"
+label_settings = SubResource("LabelSettings_33kqn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 325.0
+offset_top = 298.0
+offset_right = 781.0
+offset_bottom = 338.0
+scale = Vector2(1, 1.44)
+texture = ExtResource("2_jm20e")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_j4w1k")
+volume_db = -10.0

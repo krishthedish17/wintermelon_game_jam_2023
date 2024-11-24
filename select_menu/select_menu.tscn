@@ -1,0 +1,165 @@
+[gd_scene load_steps=18 format=3 uid="uid://bganeyp2865t6"]
+
+[ext_resource type="Texture2D" uid="uid://bhpkgepsa0v5c" path="res://parallax_field.png" id="1_geb8w"]
+[ext_resource type="Texture2D" uid="uid://ddpxelvutum0p" path="res://Training Dummy Sprite Sheet.png" id="2_ggw7b"]
+[ext_resource type="Texture2D" uid="uid://dt1rs03who2p6" path="res://melon boy sprites.png" id="3_ejqmt"]
+[ext_resource type="Texture2D" uid="uid://dv1dqnypuie7k" path="res://Fire boss sprites/Pepper Boss/Idle.png" id="3_gy2bh"]
+[ext_resource type="Script" path="res://select_menu.gd" id="3_umrbf"]
+[ext_resource type="Script" path="res://select_menu/fire_sprite.gd" id="4_h4txe"]
+[ext_resource type="Theme" uid="uid://cwpttvgwu6d7k" path="res://defaultbutton/defaultbutton.tres" id="4_hgdcj"]
+[ext_resource type="Texture2D" uid="uid://cc6f4yhse3077" path="res://Betarying blueberry/blueberry/BLUEEEEEBERRYYYYY.png" id="5_6hbqt"]
+[ext_resource type="Texture2D" uid="uid://dygnmhxtw34sl" path="res://Death_pepper.png" id="5_86p4q"]
+[ext_resource type="Script" path="res://select_menu/berry_image.gd" id="6_m0s1e"]
+[ext_resource type="Texture2D" uid="uid://uyevfyeirxt7" path="res://Betarying blueberry/blueberry/blueberry dead.png" id="7_f86iu"]
+[ext_resource type="Texture2D" uid="uid://cplbbx6v7b6g3" path="res://win screen melon man.png" id="12_yfssy"]
+[ext_resource type="AudioStream" uid="uid://skwnuu78vsos" path="res://music/Menu.mp3" id="13_soaqb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfbtu"]
+atlas = ExtResource("12_yfssy")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdcsh"]
+atlas = ExtResource("12_yfssy")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri6hb"]
+atlas = ExtResource("12_yfssy")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ri47g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfbtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdcsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri6hb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="select_menu" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2884, 324)
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("1_geb8w")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(221, 251.469)
+scale = Vector2(3.606, 3.606)
+texture = ExtResource("2_ggw7b")
+region_enabled = true
+region_rect = Rect2(3, 5, 26, 23)
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(226, 515)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ejqmt")
+region_enabled = true
+region_rect = Rect2(14, 14, 47, 42)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(817, 211)
+texture = ExtResource("3_gy2bh")
+region_enabled = true
+region_rect = Rect2(329, 20, 126, 210)
+script = ExtResource("4_h4txe")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(829, 479)
+texture = ExtResource("5_6hbqt")
+region_rect = Rect2(3, 5, 26, 23)
+script = ExtResource("6_m0s1e")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(844, 493)
+texture = ExtResource("7_f86iu")
+region_enabled = true
+region_rect = Rect2(3917, 125, 134, 130)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(817, 211)
+texture = ExtResource("5_86p4q")
+region_enabled = true
+region_rect = Rect2(7014, 144, 43, 98)
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("3_umrbf")
+
+[node name="Button" type="Button" parent="Node"]
+offset_left = 53.0
+offset_top = 314.469
+offset_right = 371.0
+offset_bottom = 345.469
+focus_neighbor_top = NodePath("../Button5")
+focus_neighbor_right = NodePath("../Button2")
+focus_neighbor_bottom = NodePath("../Button4")
+theme = ExtResource("4_hgdcj")
+text = "Practice room"
+
+[node name="Button4" type="Button" parent="Node"]
+offset_left = 54.0
+offset_top = 569.0
+offset_right = 372.0
+offset_bottom = 600.0
+focus_neighbor_top = NodePath("../Button")
+focus_neighbor_right = NodePath("../Button3")
+theme = ExtResource("4_hgdcj")
+text = "Return to menu"
+
+[node name="Button2" type="Button" parent="Node"]
+offset_left = 673.0
+offset_top = 323.0
+offset_right = 1116.0
+offset_bottom = 354.0
+focus_neighbor_left = NodePath("../Button")
+focus_neighbor_bottom = NodePath("../Button3")
+theme = ExtResource("4_hgdcj")
+text = "Smoking hot pepper"
+
+[node name="Button3" type="Button" parent="Node"]
+offset_left = 664.0
+offset_top = 573.0
+offset_right = 1132.0
+offset_bottom = 604.0
+focus_neighbor_left = NodePath("../Button4")
+focus_neighbor_top = NodePath("../Button2")
+theme = ExtResource("4_hgdcj")
+text = "Betraying Blueberry"
+
+[node name="Button5" type="Button" parent="Node"]
+offset_left = 84.0
+offset_top = 157.0
+offset_right = 328.0
+offset_bottom = 188.0
+focus_neighbor_bottom = NodePath("../Button")
+theme = ExtResource("4_hgdcj")
+text = "Win screen"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node/Button5"]
+position = Vector2(126, -77)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_ri47g")
+autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_soaqb")
+autoplay = true
+
+[connection signal="pressed" from="Node/Button" to="Node" method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Node/Button4" to="Node" method="_on_menu_pressed"]
+[connection signal="pressed" from="Node/Button2" to="Node" method="_on_fire_pressed"]
+[connection signal="pressed" from="Node/Button3" to="Node" method="_on_berry_pressed"]
+[connection signal="pressed" from="Node/Button5" to="Node" method="_on_win_button"]

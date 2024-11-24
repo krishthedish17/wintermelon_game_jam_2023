@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bt6n37ogm3xfc"]
+
+[ext_resource type="Texture2D" uid="uid://dcf8jq3urxprd" path="res://outer.png" id="1_tywso"]
+[ext_resource type="Texture2D" uid="uid://fd1poy2ww3m1" path="res://Fire boss sprites/Pepper Boss/Sprite-0004-Sheet.png" id="2_2bq1a"]
+[ext_resource type="Texture2D" uid="uid://l2j65aot584l" path="res://progress.png" id="5_e0vr0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ax5n"]
+atlas = ExtResource("2_2bq1a")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvrw3"]
+atlas = ExtResource("2_2bq1a")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rte2d"]
+atlas = ExtResource("2_2bq1a")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48q88"]
+atlas = ExtResource("2_2bq1a")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glwuo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ax5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvrw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rte2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48q88")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="load" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 469.0
+offset_bottom = 51.0
+scale = Vector2(2.48, 12.68)
+texture = ExtResource("1_tywso")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(594, 222)
+sprite_frames = SubResource("SpriteFrames_glwuo")
+autoplay = "default"
+
+[node name="load_bar" type="TextureProgressBar" parent="."]
+offset_left = 354.0
+offset_top = 334.0
+offset_right = 810.0
+offset_bottom = 374.0
+value = 100.0
+texture_progress = ExtResource("5_e0vr0")
+tint_progress = Color(0, 1, 0, 1)
